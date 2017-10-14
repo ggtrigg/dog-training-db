@@ -1,0 +1,13 @@
+<h2>Client</h2>
+<p>
+  <strong><%= @client.surname %></strong> <%= @client.firstname %>
+</p>
+
+<h2>Dogs</h2>
+<%= render @client.dogs %>
+
+<h2>Add a dog:</h2>
+<%= render 'dogs/form' %>
+
+<%= link_to 'Edit', edit_client_path(@client) %>
+<%= link_to 'Back', clients_path %>

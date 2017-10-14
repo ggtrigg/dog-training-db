@@ -1,0 +1,11 @@
+<%= form_with(model: [ @client, @client.dogs.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :name %>:&nbsp;
+    <%= form.text_field :name %>
+    <%= form.label :breed %>:&nbsp;
+    <%= form.text_field :breed %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
