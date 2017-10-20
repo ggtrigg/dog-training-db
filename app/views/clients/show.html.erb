@@ -1,13 +1,29 @@
-<h2>Client</h2>
-<p>
-  <strong><%= @client.surname %></strong> <%= @client.firstname %>
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <h2><%= @client.firstname %> <strong><%= @client.surname %></strong></h2>
+      <p>
+        <strong>Ph:</strong> <%= @client.phone_number %><br>
+        <strong>Email:</strong> <%= @client.email_address %>
+      </p>
 
-<h2>Dogs</h2>
-<%= render @client.dogs %>
+      <h3>Address</h3>
+      <%= render @client.address %>
 
-<h2>Add a dog:</h2>
-<%= render 'dogs/form' %>
+      <h3>Dogs</h3>
+      <%= render @client.dogs %>
 
-<%= link_to 'Edit', edit_client_path(@client) %>
-<%= link_to 'Back', clients_path %>
+      <h3>Add a dog:</h3>
+      <%= render 'dogs/form' %>
+
+      <h3>Notes</h3>
+      <%= render @client.notes %>
+
+      <h3>Add a note:</h3>
+      <%= render 'notes/form' %>
+
+      <%= link_to 'Edit', edit_client_path(@client), class: 'btn btn-success' %>
+      <%= link_to 'Back', clients_path, class: 'btn btn-default' %>
+    </div>
+  </div>
+</div>

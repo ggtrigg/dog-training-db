@@ -11,6 +11,7 @@ class ClientsController < ApplicationController
   
   def new
     @client = Client.new
+    @client.build_address
   end
   
   def edit
@@ -46,6 +47,7 @@ class ClientsController < ApplicationController
   
   private
   def client_params
-    params.require(:client).permit(:firstname, :surname)
+    params.require(:client).permit(:firstname, :surname, :phone_number, :email_address,
+      address_attributes: [:street1, :street2, :suburb, :postcode, :state, :country])
   end
 end

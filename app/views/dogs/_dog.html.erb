@@ -1,7 +1,7 @@
 <p>
-  <strong><%= dog.name %></strong> (<%= dog.breed %>)
+  <strong><%= dog.name %></strong> [<%= dog.age ? dog.age : '?' %>] (<%= dog.breed %>)
 
   <%= link_to 'Delete Dog', [dog.client, dog],
                method: :delete,
-               data: { confirm: 'Are you sure?' } %>
+               data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
 </p>

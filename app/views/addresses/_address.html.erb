@@ -1,0 +1,9 @@
+<p>
+  <%= address.street1 %><br />
+  <% if address.street2 and address.street2 != '' %>
+    <%= address.street2 %><br />
+  <% end %>
+  <%= address.suburb %>&nbsp;
+  <%= address.postcode %><br />
+  <%= address.state %>
+</p>
