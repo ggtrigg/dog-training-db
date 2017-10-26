@@ -1,0 +1,10 @@
+<p>
+  <%= link_to client do %>
+    <%= client.firstname %> <strong><%= client.surname %></strong>
+  <% end %>
+  <%= client.phone_number %> <%= client.email_address %> (<%= client.attendees.find_by(event_id:@event.id).status %>)
+
+  <%# link_to 'Delete Dog', [dog.client, dog],
+               method: :delete,
+               data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+</p>

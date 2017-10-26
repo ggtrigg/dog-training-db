@@ -5,17 +5,17 @@
  
       <table class="table table-striped">
         <tr>
-          <th>Surname</th>
           <th>Firstname</th>
+          <th>Surname</th>
           <th>Phone #</th>
           <th># Dogs</th>
           <th></th>
         </tr>
        
-        <% @clients.each do |client| %>
+        <% @clients.order(:surname).each do |client| %>
           <tr>
-            <td><%= client.surname %></td>
             <td><%= client.firstname %></td>
+            <td><%= client.surname %></td>
             <td><%= client.phone_number %></td>
             <td><%= client.dogs.count %></td>
             <td><%= link_to 'Show', client_path(client), class: 'btn btn-default' %>
@@ -27,6 +27,7 @@
         <% end %>
       </table>
 
+      <%= link_to 'Back', :back, class: 'btn btn-default' %>
       <%= link_to 'Home', root_path, class: 'btn btn-default' %>
     </div>
   </div>

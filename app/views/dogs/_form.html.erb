@@ -1,17 +1,6 @@
 <%= form_with(model: [ @client, @client.dogs.build ], html: {role: "form"}, local: true) do |form| %>
   <div class="row">
-    <div class="field form-group col-sm-3">
-      <%= form.label :name, class: 'control-label' %>
-      <%= form.text_field :name, class: 'form-control' %>
-    </div>
-    <div class="field form-group col-sm-3">
-      <%= form.label :breed, class: 'control-label' %>
-      <%= form.text_field :breed, class: 'form-control' %>
-    </div>
-    <div class="field form-group col-sm-3">
-      <%= form.label :age, class: 'control-label' %>
-      <%= form.text_field :age, class: 'form-control' %>
-    </div>
+    <%= render 'dogs/fields', f: form %>
   </div>
   <div class="row">
     <div class="field form-group col-sm-3">

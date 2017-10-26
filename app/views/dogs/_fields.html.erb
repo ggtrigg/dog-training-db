@@ -1,0 +1,27 @@
+<%
+  @dog_select_types = Hash.new
+  Dog.sexes.keys.each {|e| @dog_select_types[e.titleize] = e}
+%>
+<div class="field form-group col-sm-3">
+  <%= f.label :name, class: 'control-label' %>
+  <%= f.text_field :name, class: 'form-control' %>
+</div>
+<div class="field form-group col-sm-3">
+  <%= f.label :breed, class: 'control-label' %>
+  <%= f.text_field :breed, class: 'form-control' %>
+</div>
+<div class="field form-group col-sm-2">
+  <%= f.label :age, class: 'control-label' %>
+  <%= f.number_field :age, class: 'form-control', step: 0.1 %>
+</div>
+<div class="field form-group col-sm-2">
+  <%= f.label :sex, class: 'control-label' %>
+  <%= f.select :sex, options_for_select(@dog_select_types), {}, {class: 'form-control'} %>
+</div>
+<div class="col-sm-2">
+  <%= f.hidden_field :desexed, value: "0" %>
+  <label></label>
+  <%= f.label :desexed, class: 'checkbox' do %>
+    <%= f.check_box :desexed, include_hidden: false %> Desexed?
+  <% end %>
+</div>

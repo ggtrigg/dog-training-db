@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171020001103) do
+ActiveRecord::Schema.define(version: 20171025072758) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "street1"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 20171020001103) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["client_id"], name: "index_addresses_on_client_id"
+  end
+
+  create_table "attendees", force: :cascade do |t|
+    t.integer "client_id"
+    t.integer "event_id"
+    t.decimal "price", precision: 8, scale: 2
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_attendees_on_client_id"
+    t.index ["event_id"], name: "index_attendees_on_event_id"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -40,8 +51,21 @@ ActiveRecord::Schema.define(version: 20171020001103) do
     t.integer "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "age"
+    t.decimal "age", precision: 8, scale: 2
+    t.integer "sex"
+    t.boolean "desexed"
     t.index ["client_id"], name: "index_dogs_on_client_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.datetime "date"
+    t.string "location"
+    t.decimal "price", precision: 8, scale: 2
+    t.integer "duration"
+    t.boolean "cancelled"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "event_type"
   end
 
   create_table "notes", force: :cascade do |t|

@@ -12,10 +12,14 @@ class ClientsController < ApplicationController
   def new
     @client = Client.new
     @client.build_address
+    @client.dogs.build
+    @client.notes.build
+    @attendee = @client.attendees.build
   end
   
   def edit
     @client = Client.find(params[:id])
+    @client.build_address unless @client.address
   end
   
   def create
@@ -48,6 +52,10 @@ class ClientsController < ApplicationController
   private
   def client_params
     params.require(:client).permit(:firstname, :surname, :phone_number, :email_address,
-      address_attributes: [:street1, :street2, :suburb, :postcode, :state, :country])
+      address_attributes: [:id, :street1, :street2, :suburb, :postcode, :state, :country],
+      dogs_attributes: [:id, :name, :breed, :age, :sex, :desexed],
+      notes_attributes: [:id, :annotation],
+      attendees_attributes: [:price, :status],
+      events_attributes: [:id, :event_type, :location, :price, :date, :duration])
   end
 end

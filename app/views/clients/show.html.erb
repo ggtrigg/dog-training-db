@@ -1,29 +1,45 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
-      <h2><%= @client.firstname %> <strong><%= @client.surname %></strong></h2>
-      <p>
-        <strong>Ph:</strong> <%= @client.phone_number %><br>
-        <strong>Email:</strong> <%= @client.email_address %>
-      </p>
+      <div class="row">
+        <div class="col-sm-12">
+          <h2><%= @client.firstname %> <strong><%= @client.surname %></strong></h2>
+        </div>
+        <div class="col-sm-6">
+          <h3><span class="label label-primary">Phone</span> <%= number_to_phone(@client.phone_number, country_code: 61) %></h3>
+        </div>
+        <div class="col-sm-6">
+            <h3><span class="label label-primary">Email</span> <%= @client.email_address %></h3>
+        </div>
+        <div class="col-sm-6">
+          <h3><span class="label label-primary">Address</span></h3>
+          <%= render @client.address if @client.address %>
+        </div>
+        <div class="col-sm-6">
+          <h3><span class="label label-primary">Notes</span></h3>
+          <%= render @client.notes %>
+        </div>
+        <div class="col-sm-12">
+          <h3><span class="label label-primary"><%= 'Dog'.pluralize((@client.dogs.count <= 1) ? 1 : 2) %></span></h3>
+          <%= render @client.dogs %>
+          
+          <hr/>
 
-      <h3>Address</h3>
-      <%= render @client.address %>
+          <h4><span class="label label-info">Add a dog:</span></h4>
+          <%= render 'dogs/form' %>
 
-      <h3>Dogs</h3>
-      <%= render @client.dogs %>
+          <hr/>
 
-      <h3>Add a dog:</h3>
-      <%= render 'dogs/form' %>
+          <h4><span class="label label-info">Add a note:</span></h4>
+          <%= render 'notes/form' %>
+          
+          <hr/>
 
-      <h3>Notes</h3>
-      <%= render @client.notes %>
-
-      <h3>Add a note:</h3>
-      <%= render 'notes/form' %>
-
-      <%= link_to 'Edit', edit_client_path(@client), class: 'btn btn-success' %>
-      <%= link_to 'Back', clients_path, class: 'btn btn-default' %>
+          <%= link_to 'Edit', edit_client_path(@client), class: 'btn btn-success' %>
+          <%= link_to 'Back', clients_path, class: 'btn btn-default' %>
+          <%= link_to 'Home', root_path, class: 'btn btn-default' %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

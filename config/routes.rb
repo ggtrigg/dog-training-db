@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
+  get 'calendar/show'
 
+  resource :calendar, only: [:show], controller: :calendar
+  resources :events
 	resources :clients do
     resources :addresses
     resources :notes, shallow: true
@@ -9,5 +11,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'welcome#index'
+  root 'calendar#show'
 end
