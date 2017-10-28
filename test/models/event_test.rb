@@ -16,9 +16,10 @@ class EventTest < ActiveSupport::TestCase
   end
   
   test "event parameters" do
-    ev = Event.new(date: "2017/11/11 9:30", location: "At home", price: 120, duration: 90, event_type: "group_lesson")
+    dt = DateTime.current
+    ev = Event.new(date: dt, location: "At home", price: 120, duration: 90, event_type: "group_lesson")
     assert_not_nil ev, "Event creation nil"
-    assert_equal "2017/11/11 9:30", ev.date, "event date expected"
+    assert_equal dt, ev.date, "event date expected"
     assert_equal "At home", ev.location, "event location expected"
     assert_equal 120, ev.price, "event price expected"
     assert_equal 90, ev.duration, "event duration expected"
