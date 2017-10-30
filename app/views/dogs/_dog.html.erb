@@ -1,30 +1,15 @@
-  <% if @client.errors.any? %>
-    <div class="row">
-      <div class="alert alert-danger alert-dismissable col-sm-12" role="alert" id="error_explanation">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h3>
-          <%= pluralize(@client.errors.count, "error") %> prohibited
-          this client from being saved:
-        </h3>
-        <ul>
-          <% @client.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  <% end %>
-<div class="row">
-  <div class="col-sm-2">
+<tr>
+  <th>
     <strong><%= dog.name %></strong>
-  </div>
-  <div class="col-sm-6">
+  </th>
+  <td>
     <%= raw(dog.describe true) %>
-  </div>
+  </td>
 
-  <div class="col-sm-2">
-    <%= link_to 'Delete Dog', [dog.client, dog],
+  <td>
+    <%# link_to 'Delete Dog', [dog.client, dog],
                  method: :delete,
                  data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-  </div>
-</div>
+    <%= link_to 'Edit', edit_dog_path(dog) %>
+  </td>
+</tr>

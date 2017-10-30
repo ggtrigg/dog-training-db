@@ -1,10 +1,29 @@
-<p>
-  <%= link_to client do %>
-    <%= client.firstname %> <strong><%= client.surname %></strong>
-  <% end %>
-  <%= client.phone_number %> <%= client.email_address %> (<%= client.attendees.find_by(event_id:@event.id).status %>)
+  <tr>
+    <td>
+    <%= link_to client do %>
+      <%= client.firstname %> <strong><%= client.surname %></strong>
+    <% end %>
+    </td>
+    <% @attendee = client.attendees.find_by(event_id:@event.id) %>
+    <td>
+      <%= client.phone_number %>
+    </td>
+    <td>
+      <%= client.email_address %>
+    </td>
+    <td>
+      <%= raw(@attendee.html_status) %>
+    </td>
+    <td>
+      <% if @attendee.price? %>
+      $<%= @attendee.price %>
+      <% end %>
+    </td>
+    <td>
+      <%= link_to "Edit", edit_attendee_path(@attendee) %>
+    </td>
 
-  <%# link_to 'Delete Dog', [dog.client, dog],
-               method: :delete,
-               data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-</p>
+    <%# link_to 'Delete Dog', [dog.client, dog],
+                 method: :delete,
+                 data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+ </tr>

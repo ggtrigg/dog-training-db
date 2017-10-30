@@ -1,0 +1,10 @@
+<tr>
+  <th>
+    <strong><%= event.date.to_formatted_s :long %></strong>
+  </th>
+  <td>
+    <%= link_to event do %>
+      <%= event.event_type.titleize %>
+    <% end %>
+  </td>
+</tr>

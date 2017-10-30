@@ -11,15 +11,16 @@
   <%= f.label :duration, class: 'control-label' %>
   <div class="input-group">
     <%= f.number_field :duration, class: 'form-control' %>
-    <div class="input-group-addon">minutes</div>
+    <span class="input-group-addon">minutes</span>
   </div>
 </div>
 
-<div class="field form-group col-sm-3">
+<div class="field form-group col-sm-4">
   <%= f.label :price, class: 'control-label' %>
   <div class="input-group">
-    <div class="input-group-addon">$</div>
-    <%= f.number_field :price, class: 'form-control', step: 0.1 %>
+    <span class="input-group-addon">$</span>
+    <%= f.number_field :price, class: 'form-control' %>
+    <span class="input-group-addon">.00</span>
   </div>
 </div>
 
@@ -28,7 +29,7 @@
   <%= f.datetime_local_field :date, class: 'form-control' %>
 </div>
 
-<div class="field form-group col-sm-6">
+<div class="field form-group col-sm-7">
   <%= f.label :location, class: 'control-label' %>
   <%= f.text_field :location, class: 'form-control' %>
 </div>

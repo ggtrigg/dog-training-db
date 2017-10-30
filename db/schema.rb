@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171025072758) do
+ActiveRecord::Schema.define(version: 20171030044909) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "street1"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20171025072758) do
     t.integer "client_id"
     t.integer "event_id"
     t.decimal "price", precision: 8, scale: 2
-    t.integer "status"
+    t.integer "attendee_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["client_id"], name: "index_attendees_on_client_id"

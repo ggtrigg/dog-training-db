@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-2">
+      <h1>Update session</h1>
+      <h3><%= @attendee.client.fullname %></h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10 col-md-offset-2">
+      <%= render 'form' %>
+      <%= link_to 'Back', @attendee.event, class: 'btn btn-default' %>
+    </div>
+  </div>
+</div>

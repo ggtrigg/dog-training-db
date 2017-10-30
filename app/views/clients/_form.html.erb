@@ -56,11 +56,13 @@
           <%= render 'dogs/fields', f: dog %>
         <% end %>
         
-        <div class="col-sm-12">
-          <h3>Session Details</h3>
-        </div>
-        <%= form.fields_for :events, @attendee.build_event do |event| %>
-          <%= render 'events/fields', f: event %>
+        <% if not @attendee.nil? %>
+          <div class="col-sm-12">
+            <h3>Session Details</h3>
+          </div>
+          <%= form.fields_for :events, @attendee.build_event do |event| %>
+            <%= render 'events/fields', f: event %>
+          <% end %>
         <% end %>
 
       </div>

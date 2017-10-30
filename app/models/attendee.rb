@@ -3,13 +3,23 @@ class Attendee < ApplicationRecord
   belongs_to :event
   after_initialize :init
   
-  enum status: [:pending, :completed, :cancelled]
+  enum attendee_status: [:pending, :completed, :cancelled]
   
-  accepts_nested_attributes_for :client, allow_destroy: true
-  accepts_nested_attributes_for :event, allow_destroy: true
+  #accepts_nested_attributes_for :client, allow_destroy: true
+  #accepts_nested_attributes_for :event, allow_destroy: true
+  
+  def html_status
+    if self.attendee_status == "completed"
+      '<span class="text-success">' + self.attendee_status + '</span>'
+    elsif self.attendee_status == "cancelled"
+      '<span class="text-danger">' + self.attendee_status + '</span>'
+    else
+      self.attendee_status
+    end
+  end
   
   private
     def init
-      self.status = "pending"
+      self.attendee_status ||= "pending"
     end
 end

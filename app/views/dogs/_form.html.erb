@@ -1,4 +1,4 @@
-<%= form_with(model: [ @client, @client.dogs.build ], html: {role: "form"}, local: true) do |form| %>
+<%= form_with(model: @dog, html: {role: "form"}, local: true) do |form| %>
   <div class="row">
     <%= render 'dogs/fields', f: form %>
   </div>

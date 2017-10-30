@@ -1,10 +1,24 @@
 class DogsController < ApplicationController
   http_basic_authenticate_with name: "ggt", password: "prussik", only: :destroy
   
+  def edit
+    @dog = Dog.find(params[:id])
+  end
+  
   def create
     @client = Client.find(params[:client_id])
     @dog = @client.dogs.create(dog_params)
     redirect_to client_path(@client)
+  end
+  
+  def update
+    @dog = Dog.find(params[:id])
+    
+    if @dog.update(dog_params)
+      redirect_to @dog.client
+    else
+      render 'edit'
+    end
   end
   
   def destroy

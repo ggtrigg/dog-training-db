@@ -2,15 +2,21 @@
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
       <h2><%= @event.event_type.titleize %></h2>
-      <p>
-        <strong>When:</strong> <%= @event.date %><br/>
-        <strong>Where:</strong> <%= @event.location %><br/>
-        <strong>Cost:</strong> $<%= @event.price %><br/>
-        <strong>Duration:</strong> <%= @event.duration %>
-      </p>
+      <div class="row">
+        <div class="col-sm-5">
+          <table class="table">
+            <tr><th>When:</th><td><%= @event.date.to_formatted_s :long %></td></tr>
+            <tr><th>Where:</th><td><%= @event.location %></td></tr>
+            <tr><th>Cost:</th><td>$<%= @event.price %></td></tr>
+            <tr><th>Duration:</th><td><%= @event.duration %> minutes</td></tr>
+          </table>
+        </div>
+      </div>
       
       <h3><%= "Client".pluralize(@event.clients.count) %></h3>
-      <%= render @event.clients %>
+      <table class="table">
+        <%= render @event.clients %>
+      </table>
 
       <%= link_to 'Home', root_path, class: 'btn btn-default' %>
     </div>
