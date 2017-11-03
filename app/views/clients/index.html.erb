@@ -16,7 +16,7 @@
           <tr>
             <td><%= client.firstname %></td>
             <td><%= client.surname %></td>
-            <td><%= client.phone_number %></td>
+            <td><%= client.phonenum_format %></td>
             <td><%= client.dogs.count %></td>
             <td><%= link_to 'Show', client_path(client), class: 'btn btn-default' %>
             <%= link_to 'Edit', edit_client_path(client), class: 'btn btn-warning' %>

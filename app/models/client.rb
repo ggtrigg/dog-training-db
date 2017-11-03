@@ -17,7 +17,20 @@ class Client < ApplicationRecord
   
   scope :name_has, -> (name) { where("(firstname like ?) or (surname like ?)", "%#{name}%", "%#{name}%")}
   
+  # Strip spaces & tabs from the phone number so that it's
+  # easier to format later.
+  def phone_number= (number)
+    write_attribute(:phone_number, number.try(:tr, " \t", ''))
+  end
+  
   def fullname
     self.firstname + " " + self.surname
+  end
+  
+  def phonenum_format
+    a = self.phone_number.start_with?('04') ?
+      self.phone_number.scan(/(04\d{2})(\d{3})(\d{3})/) :
+      self.phone_number.scan(/(0[1-35-9])?(\d{4})(\d{4})/)
+    a.join ' '
   end
 end
