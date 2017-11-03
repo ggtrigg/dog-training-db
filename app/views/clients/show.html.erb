@@ -46,8 +46,9 @@
           <hr/>
 
           <%= link_to 'Edit', edit_client_path(@client), class: 'btn btn-success' %>
-          <%= link_to 'Back', clients_path, class: 'btn btn-default' %>
-          <%= link_to 'Home', root_path, class: 'btn btn-default' %>
+          <%= link_to 'Add Session', new_client_event_path(@client), class: 'btn btn-primary' %>
+          <%= link_to 'Back', :back, class: 'btn btn-primary' %>
+          <%= link_to 'Home', root_path, class: 'btn btn-primary' %>
         </div>
       </div>
     </div>

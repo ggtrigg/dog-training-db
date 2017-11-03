@@ -3,12 +3,16 @@
     <div class="col-sm-8 col-sm-offset-2">
       <h2><%= @event.event_type.titleize %></h2>
       <div class="row">
-        <div class="col-sm-5">
+        <div class="col-sm-8">
           <table class="table">
-            <tr><th>When:</th><td><%= @event.date.to_formatted_s :long %></td></tr>
-            <tr><th>Where:</th><td><%= @event.location %></td></tr>
-            <tr><th>Cost:</th><td>$<%= @event.price %></td></tr>
-            <tr><th>Duration:</th><td><%= @event.duration %> minutes</td></tr>
+            <tr>
+              <th>When:</th><td><%= @event.date.to_formatted_s :long %></td>
+              <th>Where:</th><td><%= @event.location %></td>
+            </tr>
+            <tr>
+              <th>Cost:</th><td>$<%= @event.price %></td>
+              <th>Duration:</th><td><%= @event.duration %> minutes</td>
+            </tr>
           </table>
         </div>
       </div>
@@ -18,7 +22,8 @@
         <%= render @event.clients %>
       </table>
 
-      <%= link_to 'Home', root_path, class: 'btn btn-default' %>
+      <%= link_to 'Back', :back, class: 'btn btn-primary' %>
+      <%= link_to 'Home', root_path, class: 'btn btn-primary' %>
     </div>
   </div>
 </div>

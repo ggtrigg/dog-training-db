@@ -15,6 +15,8 @@ class Client < ApplicationRecord
   accepts_nested_attributes_for :attendees, allow_destroy: true
   accepts_nested_attributes_for :events, allow_destroy: true, reject_if: :all_blank
   
+  scope :name_has, -> (name) { where("(firstname like ?) or (surname like ?)", "%#{name}%", "%#{name}%")}
+  
   def fullname
     self.firstname + " " + self.surname
   end

@@ -2,9 +2,13 @@
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
       <h1>New Event</h1>
+      <% if not @client.nil? %>
+      <h3>For <%= @client.fullname %></h3>
+      <% end %>
 
       <%= render 'form' %>
-      <%= link_to 'Home', root_path, class: 'btn btn-default' %>
+      <%= link_to 'Back', :back, class: 'btn btn-primary' %>
+      <%= link_to 'Home', root_path, class: 'btn btn-primary' %>
     </div>
   </div>
 </div>

@@ -1,10 +1,15 @@
 class EventsController < ApplicationController
-  def show
+    def show
     @event = Event.find(params[:id])
   end
   
   def new
-    @event = Event.new
+    if params[:client_id]
+      @client = Client.find(params[:client_id])
+      @attendee = @client.attendees.build
+    else
+      @event = Event.new
+    end
   end
   
   def create
@@ -19,6 +24,6 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:event_type, :location, :price, :date, :duration)
+    params.require(:event).permit(:event_type, :location, :price, :date, :duration, :client_id)
   end
 end

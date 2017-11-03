@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resource :calendar, only: [:show], controller: :calendar
   resources :events do
     resources :attendees, shallow: true
+    #resources :clients, only: [:update]
   end
 	resources :clients do
     resources :addresses
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
     resources :dogs , shallow: true do
       resources :notes, shallow: true
     end
+    resources :events, only: [:new, :update]
   end
 
   root 'calendar#show'
