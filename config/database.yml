@@ -1,8 +1,8 @@
-# SQLite version 3.x
-#   gem install sqlite3
+# MYSQL version 2.x
+#   gem install mysql2
 #
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
+#   Ensure the MYSQL 2 gem is defined in your Gemfile
+#   gem 'mysql2'
 #
 default: &default
   adapter: mysql2
@@ -10,8 +10,8 @@ default: &default
   reconnect: false
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 #  timeout: 5000
-  username: root
-  password: j6w1o4995
+  username: <%= ENV['MYSQL_USERNAME'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
 
 development:
   <<: *default
