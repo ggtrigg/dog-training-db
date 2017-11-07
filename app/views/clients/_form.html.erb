@@ -3,7 +3,7 @@
  
   <% if @client.errors.any? %>
     <div class="row">
-      <div class="alert alert-danger alert-dismissable col-sm-9" role="alert" id="error_explanation">
+      <div class="alert alert-danger alert-dismissable col-sm-9" role="alert" id="error-explanation">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h3>
           <%= pluralize(@client.errors.count, "error") %> prohibited
@@ -23,52 +23,52 @@
       <div class="row">
         <div class="field form-group col-sm-6">
           <%= form.label :firstname, class: 'control-label' %>
-          <%= form.text_field :firstname, class: 'form-control' %>
+          <%= form.text_field :firstname, class: 'form-control', id: 'firstname' %>
         </div>
        
         <div class="field form-group col-sm-6">
           <%= form.label :surname, class: 'control-label' %>
-          <%= form.text_field :surname, class: 'form-control' %>
+          <%= form.text_field :surname, class: 'form-control', id: 'surname' %>
         </div>
       
 
         <div class="field form-group col-sm-6">
           <%= form.label :phone_number, class: 'control-label' %>
-          <%= form.telephone_field :phone_number, class: 'form-control' %>
+          <%= form.telephone_field :phone_number, class: 'form-control', id: 'phone_number' %>
         </div>
        
         <div class="field form-group col-sm-6">
           <%= form.label :email_address, class: 'control-label' %>
-          <%= form.email_field :email_address, class: 'form-control' %>
+          <%= form.email_field :email_address, class: 'form-control', id: 'email_address' %>
         </div>
     
         <div class="col-sm-12">
           <h3>Address</h3>
         </div>
-        <%= form.fields_for :address do |addr| %>
+        <%= form.fields_for :address, @client.build_address do |addr| %>
           <%= render 'addresses/fields', f: addr %>
         <% end %>
         
         <div class="col-sm-12">
           <h3><%= 'Dog'.pluralize((@client.dogs.count <= 1) ? 1 : 2) %></h3>
         </div>
-        <%= form.fields_for :dogs do |dog| %>
+        <%= form.fields_for :dogs, @client.dogs.build do |dog| %>
           <%= render 'dogs/fields', f: dog %>
         <% end %>
         
-        <% if not @attendee.nil? %>
+        <% @attendee = @client.attendees.build %>
           <div class="col-sm-12">
             <h3>Session Details</h3>
           </div>
           <%= form.fields_for :events, @attendee.build_event do |event| %>
             <%= render 'events/fields', f: event %>
           <% end %>
-        <% end %>
+        <%# end %>
 
       </div>
     </div>
     <div class="col-sm-4">
-      <%= form.fields_for :notes do |note| %>
+      <%= form.fields_for :notes, @client.notes.build do |note| %>
         <%= render 'notes/fields', f: note %>
       <% end %>
     </div>

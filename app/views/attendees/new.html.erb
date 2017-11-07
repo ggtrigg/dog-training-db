@@ -1,0 +1,21 @@
+<% @event = Event.find(params['event_id']) if params['event_id'] %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-2">
+      <h1>Add Clients</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-2">
+      <%# render 'form' %>
+      <%= form_with model: @event, html: {role: "form"}, local: true do |form| %>
+        <%= form.collection_select :client_ids, Client.all.order(:surname).collect {|c| [c.describe, c.id]}, :last, :first,
+          {:selected => @event.client_ids, :include_hidden => false}, {:class => "form-control", :multiple => true, :size => 10} %>
+        <br/>
+        <%= form.submit "Add Client(s)", class: 'btn btn-primary' %>
+      <% end %>
+      <%= link_to 'Back', :back, class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>

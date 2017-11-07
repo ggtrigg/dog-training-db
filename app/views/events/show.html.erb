@@ -1,29 +1,43 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-      <h2><%= @event.event_type.titleize %></h2>
-      <div class="row">
-        <div class="col-sm-8">
-          <table class="table">
-            <tr>
-              <th>When:</th><td><%= @event.date.to_formatted_s :long %></td>
-              <th>Where:</th><td><%= @event.location %></td>
-            </tr>
-            <tr>
-              <th>Cost:</th><td>$<%= @event.price %></td>
-              <th>Duration:</th><td><%= @event.duration %> minutes</td>
-            </tr>
-          </table>
-        </div>
+<div class="col-sm-8 col-sm-offset-2">
+  <h2><%= @event.event_type.titleize %></h2>
+  <% if @event.errors.any? %>
+    <div class="row">
+      <div class="alert alert-danger alert-dismissable col-sm-9" role="alert" id="error-explanation">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3>
+          <%= pluralize(@event.errors.count, "error") %> prohibited
+          this event from being updated:
+        </h3>
+        <ul>
+          <% @event.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
       </div>
-      
-      <h3><%= "Client".pluralize(@event.clients.count) %></h3>
-      <table class="table">
-        <%= render @event.clients %>
-      </table>
+    </div>
+  <% end %>
 
-      <%= link_to 'Back', :back, class: 'btn btn-primary' %>
-      <%= link_to 'Home', root_path, class: 'btn btn-primary' %>
+  <div class="row">
+    <div class="col-sm-8">
+      <table class="table"> 
+        <tr>
+          <th>When:</th><td><%= @event.date.to_formatted_s :long %></td>
+          <th>Where:</th><td><%= @event.location %></td>
+        </tr>
+        <tr>
+          <th>Cost:</th><td>$<%= @event.price %></td>
+          <th>Duration:</th><td><%= @event.duration %> minutes</td>
+        </tr>
+      </table>
     </div>
   </div>
+  
+  <h3><%= "Client".pluralize(@event.clients.count) %></h3>
+  <table class="table">
+    <%= render @event.clients %>
+  </table>
+
+  <%= link_to 'Add Clients', new_event_attendee_path(@event), class: 'btn btn-primary' %>
+  <%= link_to 'Back', :back, class: 'btn btn-primary' %>
+  <%= link_to 'Home', root_path, class: 'btn btn-info' %>
 </div>

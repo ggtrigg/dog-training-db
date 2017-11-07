@@ -1,6 +1,6 @@
 <tr>
   <th>
-    <strong><%= event.date.to_formatted_s :short %></strong>
+    <strong><%= event.date.try(:to_formatted_s, :short) %></strong>
   </th>
   <td>
     <%= link_to event do %>

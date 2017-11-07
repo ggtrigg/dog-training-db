@@ -1,5 +1,5 @@
-<% @event = @attendee.build_event unless @attendee.nil? %>
-<%= form_with model: @client, html: {role: "form"}, local: true do |form| %>
+<% @event = @attendee.build_event if @event.blank? %>
+<%= form_with model: @client.blank? ? @event : @client, html: {role: "form"}, local: true do |form| %>
 
   <%
     @event_select_types = Hash.new
@@ -23,9 +23,7 @@
   <% end %>
 
   <div class="row">
-    <%= form.fields_for :events, @event do |event| %>
-      <%= render 'events/fields', f: event %>
-    <% end %>
+    <%= render 'events/fields', f: form %>
   </div>
   
   <div class="row">
@@ -33,5 +31,4 @@
       <%= form.submit class: 'btn btn-primary' %>
     </div>
   </div>
- 
 <% end %>

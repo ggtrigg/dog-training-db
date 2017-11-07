@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-  http_basic_authenticate_with name: "ggt", password: "prussik", except: [:index, :show]
+  # http_basic_authenticate_with name: "ggt", password: "prussik", except: [:index, :show]
   
   def index
     @clients = Client.all
@@ -11,10 +11,10 @@ class ClientsController < ApplicationController
   
   def new
     @client = Client.new
-    @client.build_address
-    @client.dogs.build
-    @client.notes.build
-    @attendee = @client.attendees.build
+    #~ @client.build_address
+    #~ @client.dogs.build
+    #~ @client.notes.build
+    #~ @attendee = @client.attendees.build
   end
   
   def edit
