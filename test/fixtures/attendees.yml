@@ -2,8 +2,8 @@
 
 one:
   price: 100
-  status: 1
+  attendee_status: 1
 
 two:
   price: 50
-  status: 1
+  attendee_status: 1

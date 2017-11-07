@@ -1,9 +1,6 @@
 require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
   test "event new" do
     ev = Event.new
     assert_not_nil ev, "Event creation nil"
@@ -19,7 +16,7 @@ class EventTest < ActiveSupport::TestCase
     dt = DateTime.current
     ev = Event.new(date: dt, location: "At home", price: 120, duration: 90, event_type: "group_lesson")
     assert_not_nil ev, "Event creation nil"
-    assert_equal dt, ev.date, "event date expected"
+    assert_equal dt.asctime, ev.date.asctime, "event date expected"
     assert_equal "At home", ev.location, "event location expected"
     assert_equal 120, ev.price, "event price expected"
     assert_equal 90, ev.duration, "event duration expected"
