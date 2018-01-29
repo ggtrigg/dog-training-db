@@ -1,26 +1,14 @@
 class AttendeesController < ApplicationController
-  def new
-    # @attendee = @event.nil? ? Attendee.new : @event.attendee.build
-    @attendee = Attendee.new
-  end
 
-  def create
-    @attendee = Attendee.new(attendee_params)
- 
-    if @attendee.save
-      redirect_to @attendee.event
-    else
-      render 'new'
-    end
-  end
-  
-  def edit
-    @attendee = Attendee.find(params[:id])
+  before_action :authenticate_user!
+
+  def new
+    @attendee = Attendee.new
   end
 
   def update
     @attendee = Attendee.find(params[:id])
-    
+
     if @attendee.update(attendee_params)
       redirect_to @attendee.event
     else
@@ -30,7 +18,6 @@ class AttendeesController < ApplicationController
   
   private
   def attendee_params
-    params.require(:attendee).permit(:price, :attendee_status, :client_id, :client_ids => [])
+    params.require(:attendee).permit(:price, :attendee_status)
   end
-  
 end

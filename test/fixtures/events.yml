@@ -1,15 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  date: 2017-10-21 14:50:07
-  location: MyString
-  price: 
-  duration: 1
+  event_type: private_lesson
+  date: 2017-11-08 10:30:00
+  location: Client's house
+  price: 100
+  duration: 90
   cancelled: false
 
 two:
-  date: 2017-10-21 14:50:07
-  location: MyString
-  price: 
-  duration: 1
+  event_type: emmett_therapy
+  date: 2017-12-11 14:00:00
+  location: Home
+  price: 40
+  duration: 30
   cancelled: false

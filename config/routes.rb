@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'calendar/show'
 
   resource :calendar, only: [:show], controller: :calendar
@@ -15,5 +16,9 @@ Rails.application.routes.draw do
     resources :events, only: [:new, :update]
   end
 
-  root 'calendar#show'
+  authenticated :user do
+    root to: 'calendar#show', as: :authenticated_root
+  end
+  root to: redirect('/users/sign_in')
+  # root 'calendar#show'
 end

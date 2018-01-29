@@ -1,11 +1,1 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  annotatable: one
-  annotatable_type: Annotatable
-  annotation: MyText
-
-two:
-  annotatable: two
-  annotatable_type: Annotatable
-  annotation: MyText

@@ -1,5 +1,7 @@
 class NotesController < ApplicationController
-  
+
+  before_action :authenticate_user!
+
   def create
     if params[:client_id]
       parent = Client.find(params[:client_id])

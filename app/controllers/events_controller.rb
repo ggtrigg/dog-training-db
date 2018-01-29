@@ -1,5 +1,8 @@
 class EventsController < ApplicationController
-    def show
+
+  before_action :authenticate_user!
+
+  def show
     @event = Event.find(params[:id])
   end
   

@@ -1,9 +1,1 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  price: 100
-  attendee_status: 1
-
-two:
-  price: 50
-  attendee_status: 1

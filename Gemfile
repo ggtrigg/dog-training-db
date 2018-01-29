@@ -11,6 +11,8 @@ gem 'rails', '~> 5.1.1'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 gem 'mysql2'
+# Use Devise for user authentication
+gem 'devise'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -30,6 +32,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+# Use Passenger
+gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

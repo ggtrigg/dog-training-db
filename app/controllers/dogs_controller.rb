@@ -1,5 +1,8 @@
 class DogsController < ApplicationController
-  http_basic_authenticate_with name: "ggt", password: "prussik", only: :destroy
+  # http_basic_authenticate_with name: "ggt", password: "prussik", only: :destroy
+  
+  before_action :authenticate_user!
+
   
   def edit
     @dog = Dog.find(params[:id])

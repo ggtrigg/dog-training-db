@@ -18,6 +18,7 @@
       <h3><span class="label label-primary">Notes</span></h3>
       <%= render @client.notes %>
     </div>
+    <div class="col-sm-12"><hr/></div>
     <div class="col-sm-7">
       <h3><span class="label label-primary"><%= 'Dog'.pluralize((@client.dogs.count <= 1) ? 1 : 2) %></span></h3>
       <table class="table">

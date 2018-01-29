@@ -1,19 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  street1: MyString
-  street2: MyString
-  suburb: MyString
-  postcode: MyString
-  state: MyString
-  country: MyString
+  street1: 5 Samson Road
+  suburb: Macclesfield
+  postcode: 3782
   client: one
 
 two:
-  street1: MyString
-  street2: MyString
-  suburb: MyString
-  postcode: MyString
-  state: MyString
-  country: MyString
+  street1: 31 Margaret Street
+  suburb: Avonsleigh
+  postcode: 3782
   client: two

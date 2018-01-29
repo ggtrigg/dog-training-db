@@ -1,6 +1,8 @@
 class ClientsController < ApplicationController
   # http_basic_authenticate_with name: "ggt", password: "prussik", except: [:index, :show]
   
+  before_action :authenticate_user!
+  
   def index
     @clients = Client.all
   end

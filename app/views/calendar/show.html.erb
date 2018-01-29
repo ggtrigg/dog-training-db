@@ -16,6 +16,7 @@
       <% if @events_by_date[date.to_s] %>
         <ul>
           <% @events_by_date[date.to_s].each do |event| %>
+            <%# e_class = event.cancelled? ? "text-danger" : "" %>
             <li><%= link_to event.event_type.titleize, event %></li>
           <% end %>
         </ul>
