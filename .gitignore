@@ -19,6 +19,7 @@
 
 /node_modules
 /yarn-error.log
+/publish
 
 .byebug_history
 
