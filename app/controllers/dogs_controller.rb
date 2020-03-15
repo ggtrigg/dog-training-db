@@ -1,5 +1,4 @@
 class DogsController < ApplicationController
-  # http_basic_authenticate_with name: "ggt", password: "prussik", only: :destroy
   
   before_action :authenticate_user!
 

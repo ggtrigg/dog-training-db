@@ -1,0 +1,15 @@
+default: &default
+  name: Your Company Name
+  url: http://your_company.org
+  banner_image: tdc_banner.png
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  name: The Dependable Companion
+  url: https://www.thedependablecompanion.com.au
+  banner_image: tdc_banner.png

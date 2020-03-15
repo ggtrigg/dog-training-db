@@ -62,5 +62,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Bootstrap integration
 gem 'jquery-rails'
-gem 'bootstrap-sass', '~> 3.2.0'
+gem 'bootstrap', '~> 4.4.1'
 gem 'autoprefixer-rails'
