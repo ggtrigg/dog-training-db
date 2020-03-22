@@ -1,9 +1,9 @@
 <% @attendee = Attendee.find params["id"] if @attendee.blank? %>
-<div class="col-md-10 col-md-offset-2">
+<div class="col-md-10 offset-md-2">
   <h1>Update session</h1>
   <h3><%= @attendee.client.fullname %></h3>
 </div>
-<div class="col-md-10 col-md-offset-2">
+<div class="col-md-10 offset-md-2">
   <%= render 'form' %>
   <%= link_to 'Back', @attendee.event, class: 'btn btn-primary' %>
 </div>
