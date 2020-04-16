@@ -10,7 +10,9 @@ class NoteTest < ActiveSupport::TestCase
   test "note save" do
     note = Note.new
     assert_not_nil note, "note creation nil"
-    assert note.save
+    assert_raises(ActiveRecord::RecordInvalid) { note.save! }
+    note.annotation = "Here's a note!"
+    assert note.save!
   end
 
   test "note parameters" do

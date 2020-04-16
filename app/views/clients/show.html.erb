@@ -1,20 +1,17 @@
-<div class="col-sm-8 offset-sm-2">
+<div class="col-sm-9 offset-sm-1">
   <div class="row">
     <div class="col-sm-12" id="client-name">
       <h2><%= @client.firstname %> <strong><%= @client.surname %></strong></h2>
     </div>
-    <div class="col-sm-6">
-      <h3><span class="badge badge-secondary">Phone</span>
-      <%= @client.phonenum_format %></h3>
+    <div class="col-sm-8">
+      <h3><span class="badge badge-secondary">Contact Details</span></h3>
+      <table class="table">
+        <tr><th>Phone:</th><td><%= @client.phonenum_format %></td></tr>
+        <tr><th>Email:</th><td><%= mail_to(@client.email_address) %></td></tr>
+        <tr><th>Address:</th><td><%= render @client.address if @client.address %></td></tr>
+      </table>
     </div>
-    <div class="col-sm-6">
-        <h3><span class="badge badge-secondary">Email</span> <%= @client.email_address %></h3>
-    </div>
-    <div class="col-sm-6">
-      <h3><span class="badge badge-secondary">Address</span></h3>
-      <%= render @client.address if @client.address %>
-    </div>
-    <div class="col-sm-6">
+    <div class="col-sm-4" id="client-notes">
       <h3><span class="badge badge-secondary">Notes</span></h3>
       <%= render @client.notes %>
     </div>
@@ -24,26 +21,18 @@
       <table class="table">
         <%= render @client.dogs %>
       </table>
+      <h4><span class="label label-info">Add a dog:</span></h4>
+      <%= render 'dogs/form' %>
     </div>
     <div class="col-sm-5">
       <h3><span class="label label-primary">Sessions</span></h3>
       <table class="table">
         <%= render @client.events %>
       </table>
-    </div>
-    <div class="col-sm-12">
-      <hr/>
-
-      <h4><span class="label label-info">Add a dog:</span></h4>
-      <%= render 'dogs/form' %>
-
-      <hr/>
-
       <h4><span class="label label-info">Add a note:</span></h4>
       <%= render 'notes/form' %>
-      
-      <hr/>
-
+    </div>
+    <div class="col-sm-12">
       <%= link_to 'Edit', edit_client_path(@client), class: 'btn btn-success' %>
       <%= link_to 'Add Session', new_client_event_path(@client), class: 'btn btn-primary' %>
       <%= link_to 'Back', :back, class: 'btn btn-primary' %>

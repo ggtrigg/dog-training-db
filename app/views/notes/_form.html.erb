@@ -1,12 +1,12 @@
-<%= form_with(model: [ @client, @client.notes.build ], html: {role: "form"}, local: true) do |form| %>
-  <div class="row">
-    <div class="field form-group col-sm-6">
-      <%= form.text_area :annotation, class: 'form-control' %>
-    </div>
+<%= form_with(model: [ @client, @client.notes.build ], html: {role: "form"}, local: false) do |form| %>
+  
+  <div class="field form-group">
+    <%= form.text_area :annotation, class: 'form-control' %>
   </div>
-  <div class="row">
-    <div class="field form-group col-sm-4">
-      <%= form.submit class: 'btn btn-default' %>
-    </div>
+
+  
+  <div class="field form-group">
+    <%= form.submit class: 'btn btn-info' %>
   </div>
+
 <% end %>
