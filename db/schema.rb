@@ -12,22 +12,22 @@
 
 ActiveRecord::Schema.define(version: 2018_01_28_220238) do
 
-  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.string "street1"
     t.string "street2"
     t.string "suburb"
     t.string "postcode"
     t.string "state"
     t.string "country"
-    t.integer "client_id"
+    t.bigint "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["client_id"], name: "index_addresses_on_client_id"
   end
 
-  create_table "attendees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "client_id"
-    t.integer "event_id"
+  create_table "attendees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
+    t.bigint "client_id"
+    t.bigint "event_id"
     t.decimal "price", precision: 8, scale: 2
     t.integer "attendee_status"
     t.datetime "created_at", null: false
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2018_01_28_220238) do
     t.index ["event_id"], name: "index_attendees_on_event_id"
   end
 
-  create_table "clients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "clients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.string "firstname"
     t.string "surname"
     t.datetime "created_at", null: false
@@ -45,10 +45,10 @@ ActiveRecord::Schema.define(version: 2018_01_28_220238) do
     t.string "email_address"
   end
 
-  create_table "dogs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "dogs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.string "name"
     t.string "breed"
-    t.integer "client_id"
+    t.bigint "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "age", precision: 8, scale: 2
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2018_01_28_220238) do
     t.index ["client_id"], name: "index_dogs_on_client_id"
   end
 
-  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.datetime "date"
     t.string "location"
     t.decimal "price", precision: 8, scale: 2
@@ -68,16 +68,16 @@ ActiveRecord::Schema.define(version: 2018_01_28_220238) do
     t.integer "event_type"
   end
 
-  create_table "notes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "notes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.string "annotatable_type"
-    t.integer "annotatable_id"
+    t.bigint "annotatable_id"
     t.text "annotation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["annotatable_type", "annotatable_id"], name: "index_notes_on_annotatable_type_and_annotatable_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.datetime "remember_created_at"
@@ -91,4 +91,6 @@ ActiveRecord::Schema.define(version: 2018_01_28_220238) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "addresses", "clients"
+  add_foreign_key "dogs", "clients"
 end
