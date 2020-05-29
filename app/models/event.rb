@@ -3,7 +3,7 @@ class Event < ApplicationRecord
   has_many :clients, through: :attendees, dependent: :destroy
   after_initialize :init
 
-  enum event_type: [:private_lesson, :group_lesson, :emmett_therapy, :trick_training, :xmas_party]
+  enum event_type: [:day_care, :trust_technique, :boarding]
   
   validates :date, presence: true
   validates :location, presence: true
