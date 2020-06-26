@@ -11,9 +11,9 @@
     <div class="col">
       <div class="list-group list-group-horizontal" role="tablist">
         <a class="list-group-item list-group-item-action active" data-toggle="list" href="#dogs" role="tab">
-          Dogs<span class="badge badge-secondary"><%= @client.dogs.count %></span></a>
+          Dogs <span class="badge badge-secondary"><%= @client.dogs.count %></span></a>
         <a class="list-group-item list-group-item-action" data-toggle="list" href="#notes" role="tab">
-          Notes <span class="badge badge-secondary"><%= @client.notes.count %></span></a>
+          Notes <span class="badge badge-secondary" id="note-count"><%= @client.notes.count %></span></a>
         <a class="list-group-item list-group-item-action" data-toggle="list" href="#documents" role="tab">
           Documents <span class="badge badge-secondary">0</span></a>
       </div>
