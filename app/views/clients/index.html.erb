@@ -1,30 +1,24 @@
-<div class="col-sm-8 offset-sm-2">
+<div class="col-sm-2">
+  <%= link_to 'New Client', new_client_path, class: 'btn btn-primary' %>
+</div>
+<div class="col-sm-8 mt-2">
   <h1>Client list</h1>
 
   <table class="table table-striped">
     <tr>
-      <th>Firstname</th>
-      <th>Surname</th>
+      <th>Client name</th>
       <th>Phone #</th>
-      <th># Dogs</th>
+      <th>Client's Dogs</th>
       <th></th>
     </tr>
    
     <% @clients.order(:surname, :firstname).each do |client| %>
       <tr>
-        <td><%= client.firstname %></td>
-        <td><%= client.surname %></td>
+        <td><%= link_to client.fullname, client_path(client), class: 'text-reset' %></td>
         <td><%= client.phonenum_format %></td>
-        <td><%= client.dogs.count %></td>
-        <td><%= link_to 'Show', client_path(client), class: 'btn btn-default' %>
-        <%= link_to 'Edit', edit_client_path(client), class: 'btn btn-warning' %>
-        <%# link_to 'Destroy', client_path(client), class: 'btn btn-danger',
-                method: :delete,
-                data: { confirm: 'Are you sure?' } %></td>
+        <td><%= client.dogs.map {|d| link_to d.name, dog_path(d) }.join(' &bull; ').html_safe %></td>
+        <td><%= link_to 'Edit', edit_client_path(client), class: 'btn btn-warning btn-sm' %></td>
       </tr>
     <% end %>
   </table>
-
-  <%= link_to 'Back', :back, class: 'btn btn-primary' %>
-  <%= link_to 'Home', root_path, class: 'btn btn-info' %>
 </div>

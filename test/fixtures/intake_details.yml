@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  text: MyText
+  intake_form: one
+  intake_item: one
+
+two:
+  text: MyText
+  intake_form: two
+  intake_item: two

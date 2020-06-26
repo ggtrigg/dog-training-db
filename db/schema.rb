@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_01_28_220238) do
+ActiveRecord::Schema.define(version: 2020_06_24_175759) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.string "street1"
@@ -68,6 +68,29 @@ ActiveRecord::Schema.define(version: 2018_01_28_220238) do
     t.integer "event_type"
   end
 
+  create_table "intake_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
+    t.text "text"
+    t.bigint "intake_form_id"
+    t.bigint "intake_item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["intake_form_id"], name: "index_intake_details_on_intake_form_id"
+    t.index ["intake_item_id"], name: "index_intake_details_on_intake_item_id"
+  end
+
+  create_table "intake_forms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "dog_id"
+    t.index ["dog_id"], name: "index_intake_forms_on_dog_id"
+  end
+
+  create_table "intake_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "notes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci", force: :cascade do |t|
     t.string "annotatable_type"
     t.bigint "annotatable_id"
@@ -93,4 +116,7 @@ ActiveRecord::Schema.define(version: 2018_01_28_220238) do
 
   add_foreign_key "addresses", "clients"
   add_foreign_key "dogs", "clients"
+  add_foreign_key "intake_details", "intake_forms"
+  add_foreign_key "intake_details", "intake_items"
+  add_foreign_key "intake_forms", "dogs"
 end

@@ -1,5 +1,5 @@
 <%# We're inside a col-sm-10 col-sm-offset-2 here. %>
-<%= form_with model: @client, html: {role: "form"}, local: true do |form| %>
+<%= form_with model: @client, local: true do |form| %>
  
   <% if @client.errors.any? %>
     <div class="row">
@@ -20,56 +20,41 @@
 
   <div class="row">
     <div class="col-sm-8">
-      <div class="row">
-        <div class="field form-group col-sm-6">
-          <%= form.label :firstname, class: 'control-label' %>
+      <div class="form-row">
+        <div class="form-group col">
+          <%= form.label :firstname %>
           <%= form.text_field :firstname, class: 'form-control', id: 'firstname' %>
         </div>
        
-        <div class="field form-group col-sm-6">
-          <%= form.label :surname, class: 'control-label' %>
+        <div class="form-group col">
+          <%= form.label :surname %>
           <%= form.text_field :surname, class: 'form-control', id: 'surname' %>
         </div>
-      
-
+      </div>
+      <div class="form-row">
         <div class="field form-group col-sm-6">
-          <%= form.label :phone_number, class: 'control-label' %>
+          <%= form.label :phone_number %>
           <%= form.telephone_field :phone_number, class: 'form-control', id: 'phone_number' %>
         </div>
        
         <div class="field form-group col-sm-6">
-          <%= form.label :email_address, class: 'control-label' %>
+          <%= form.label :email_address %>
           <%= form.email_field :email_address, class: 'form-control', id: 'email_address' %>
         </div>
+      </div>
     
-        <div class="col-sm-12">
-          <h3>Address</h3>
-        </div>
-        <%= form.fields_for :address, @client.build_address do |addr| %>
-          <%= render 'addresses/fields', f: addr %>
-        <% end %>
-        
-        <div class="col-sm-12">
-          <h3><%= 'Dog'.pluralize((@client.dogs.count <= 1) ? 1 : 2) %></h3>
-        </div>
+      <h4>Address</h4>
+    
+      <%= form.fields_for :address, @client.address do |addr| %>
+        <%= render 'addresses/fields', f: addr %>
+      <% end %>
+      
+    
+      <% if @client.new_record? %>
+        <h4><%= 'Dog'.pluralize((@client.dogs.count <= 1) ? 1 : 2) %></h4>
         <%= form.fields_for :dogs, @client.dogs.build do |dog| %>
           <%= render 'dogs/fields', f: dog %>
         <% end %>
-        
-        <% @attendee = @client.attendees.build %>
-          <div class="col-sm-12">
-            <h3>Session Details</h3>
-          </div>
-          <%= form.fields_for :events, @attendee.build_event do |event| %>
-            <%= render 'events/fields', f: event %>
-          <% end %>
-        <%# end %>
-
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <%= form.fields_for :notes, @client.notes.build do |note| %>
-        <%= render 'notes/fields', f: note %>
       <% end %>
     </div>
   </div>

@@ -1,29 +1,32 @@
-<%
-  @dog_select_types = Hash.new
-  Dog.sexes.keys.each {|e| @dog_select_types[e.titleize] = e}
-%>
-
-<div class="field form-group">
-  <%= f.label :name, class: 'control-label' %>
-  <%= f.text_field :name, class: 'form-control', id: 'dog-name' %>
+<div class="form-row">
+  <div class="form-group col">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control', id: 'dog-name' %>
+  </div>
+  <div class="form-group col">
+    <%= f.label :breed %>
+    <%= f.text_field :breed, class: 'form-control', id: 'breed' %>
+  </div>
 </div>
-<div class="field form-group">
-  <%= f.label :breed, class: 'control-label' %>
-  <%= f.text_field :breed, class: 'form-control', id: 'breed' %>
-</div>
-<div class="field form-group">
-  <%= f.label :age, class: 'control-label' %>
-  <%= f.number_field :age, class: 'form-control', id: 'age', step: 0.1 %>
-</div>
-<div class="field form-group">
-  <%= f.label :sex, class: 'control-label' %>
-  <%= f.select :sex, options_for_select(@dog_select_types), {}, {class: 'form-control', id: 'sex'} %>
-</div>
-<div class="form-group">
-  <%= f.hidden_field :desexed, value: "0" %>
-  <label></label>
-  <%= f.label :desexed, class: 'checkbox' do %>
-    <%= f.check_box :desexed, include_hidden: false, id: 'desexed', checked: true %> Desexed?
-  <% end %>
+<div class="form-row">
+  <div class="input-group mb-3 col-sm-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Age</span>
+    </div>
+    <%= f.number_field :age, class: 'form-control', step: 0.1, 'aria-label': "Age", 'aria-describedby': "basic-addon1" %>
+  </div>
+  <div class="input-group mb-3 col-sm-4">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon2">Sex</span>
+    </div>
+    <%= f.select :sex, options_for_select(Dog.sexes.map {|s| [s.first.titlecase, s.first]}), {}, {class: 'form-control', 'aria-label': "Sex", 'aria-describedby': "basic-addon2"} %>
+  </div>
+  <div class="form-group col-auto">
+    <div class="custom-control custom-checkbox">
+      <%# f.hidden_field :desexed, value: "0" %>
+      <%= f.check_box :desexed, include_hidden: false, id: 'desexed', checked: true, class: 'custom-control-input', id: 'is-desexed' %>
+      <%= f.label :desexed, class: 'custom-control-label', for: 'is-desexed' %>
+    </div>
+  </div>
 </div>
 

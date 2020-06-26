@@ -1,12 +1,16 @@
 class Dog < ApplicationRecord
   has_many :notes, as: :annotatable, dependent: :destroy
+  has_one :intake_form, dependent: :destroy
   belongs_to :client
+
+  after_create :add_intake_form
   
   enum sex: [:male, :female]
   
   validates :name, presence: true
   validates :breed, presence: true
 
+  accepts_nested_attributes_for :intake_form
   
   def describe(do_html = false)
     notstr = 'not '
@@ -15,4 +19,9 @@ class Dog < ApplicationRecord
     end
     sprintf("a %.1f year old %s %sdesexed %s", self.age ? self.age : 0, self.sex, self.desexed ? '' : notstr, self.breed)
   end
+
+  private
+    def add_intake_form
+      self.create_intake_form
+    end
 end

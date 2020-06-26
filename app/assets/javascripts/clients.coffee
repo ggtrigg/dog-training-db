@@ -7,3 +7,6 @@ $(document).ready ->
     $("#client-notes").append xhr.responseText
   ).on "ajax:error", (event) ->
     $("#client-notes").append "<p>ERROR</p>"
+  $("form").on("ajax.success", (event) ->
+    alert('Ajax success')
+  )

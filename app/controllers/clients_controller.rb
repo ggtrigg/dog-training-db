@@ -3,7 +3,7 @@ class ClientsController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @clients = Client.all
+    @clients = Client.all.order updated_at: 'DESC'
   end
   
   def show
@@ -12,10 +12,7 @@ class ClientsController < ApplicationController
   
   def new
     @client = Client.new
-    #~ @client.build_address
-    #~ @client.dogs.build
-    #~ @client.notes.build
-    #~ @attendee = @client.attendees.build
+    @client.build_address
   end
   
   def edit

@@ -1,0 +1,2 @@
+$("<%= escape_javascript(render @note) %>").appendTo("#notes-container");
+$("#dn_count").text("<%= @note.annotatable.notes.count %>")

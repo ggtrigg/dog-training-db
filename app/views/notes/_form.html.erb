@@ -1,12 +1,14 @@
-<%= form_with(model: [ @client, @client.notes.build ], html: {role: "form"}, local: false) do |form| %>
+<%
+  if @client.present?
+    model = [ @client, @client.notes.build ]
+  elsif @dog.present?
+    model = [ @dog, @dog.notes.build ]
+  end
+%>
+<%= form_with(model: model, remote: true, local: false) do |form| %>
   
-  <div class="field form-group">
+  <div class="form-group">
     <%= form.text_area :annotation, class: 'form-control' %>
-  </div>
-
-  
-  <div class="field form-group">
-    <%= form.submit class: 'btn btn-info' %>
   </div>
 
 <% end %>

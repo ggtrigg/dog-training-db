@@ -1,42 +1,63 @@
-<div class="col-sm-9 offset-sm-1">
+<div class="col-sm-10">
   <div class="row">
     <div class="col-sm-12" id="client-name">
-      <h2><%= @client.firstname %> <strong><%= @client.surname %></strong></h2>
+      <p>
+        <span class="h3"><%= @client.firstname %> <strong><%= @client.surname %></strong></span>
+      </p>
+      <p>
+        <span class="border p-2 text-info"><%= client_details(@client) %></span>
+      </p>
     </div>
-    <div class="col-sm-8">
-      <h3><span class="badge badge-secondary">Contact Details</span></h3>
-      <table class="table">
-        <tr><th>Phone:</th><td><%= @client.phonenum_format %></td></tr>
-        <tr><th>Email:</th><td><%= mail_to(@client.email_address) %></td></tr>
-        <tr><th>Address:</th><td><%= render @client.address if @client.address %></td></tr>
-      </table>
+    <div class="col">
+      <div class="list-group list-group-horizontal" role="tablist">
+        <a class="list-group-item list-group-item-action active" data-toggle="list" href="#dogs" role="tab">
+          Dogs<span class="badge badge-secondary"><%= @client.dogs.count %></span></a>
+        <a class="list-group-item list-group-item-action" data-toggle="list" href="#notes" role="tab">
+          Notes <span class="badge badge-secondary"><%= @client.notes.count %></span></a>
+        <a class="list-group-item list-group-item-action" data-toggle="list" href="#documents" role="tab">
+          Documents <span class="badge badge-secondary">0</span></a>
+      </div>
+      <div class="tab-content p-2 border">
+        <div class="tab-pane active" id="dogs", role="tabpanel">
+          <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#dogModal">
+            Add dog
+          </button>
+          <div id="dogs-container">
+            <%= render @client.dogs %>
+          </div>
+        </div>
+        <div class="tab-pane" id="notes", role="tabpanel">
+          <%= render 'notes/notes' %>
+        </div>
+        <div class="tab-pane" id="documents", role="tabpanel">
+          <p>Documents are listed here</p>
+        </div>
+      </div>
     </div>
-    <div class="col-sm-4" id="client-notes">
-      <h3><span class="badge badge-secondary">Notes</span></h3>
-      <%= render @client.notes %>
-    </div>
-    <div class="col-sm-12"><hr/></div>
-    <div class="col-sm-7">
-      <h3><span class="label label-primary"><%= 'Dog'.pluralize((@client.dogs.count <= 1) ? 1 : 2) %></span></h3>
-      <table class="table">
-        <%= render @client.dogs %>
-      </table>
-      <h4><span class="label label-info">Add a dog:</span></h4>
-      <%= render 'dogs/form' %>
-    </div>
-    <div class="col-sm-5">
-      <h3><span class="label label-primary">Sessions</span></h3>
-      <table class="table">
-        <%= render @client.events %>
-      </table>
-      <h4><span class="label label-info">Add a note:</span></h4>
-      <%= render 'notes/form' %>
-    </div>
-    <div class="col-sm-12">
-      <%= link_to 'Edit', edit_client_path(@client), class: 'btn btn-success' %>
-      <%= link_to 'Add Session', new_client_event_path(@client), class: 'btn btn-primary' %>
-      <%= link_to 'Back', :back, class: 'btn btn-primary' %>
-      <%= link_to 'Home', root_path, class: 'btn btn-info' %>
+  </div>
+</div>
+<div class="col-sm-2 order-first">
+  <%= link_to 'Back', :back, class: 'btn btn-primary' %>
+  <%= link_to 'Home', root_path, class: 'btn btn-secondary' %>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="dogModal" tabindex="-1" role="dialog" aria-labelledby="dogModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="noteModalCenterTitle">New dog</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'dogs/form' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary modal-submit" data-dismiss="modal">Add dog</button>
+      </div>
     </div>
   </div>
 </div>

@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Passenger
-gem "passenger", ">= 5.3.2", require: "phusion_passenger/rack_handler"
+# gem "passenger", ">= 5.3.2", require: "phusion_passenger/rack_handler"
 
 
 # Use Capistrano for deployment

@@ -1,0 +1,20 @@
+<% @intake_form = @dog.intake_form
+   @intake_details = @intake_form.intake_details %>
+<%= form_with(model: @intake_form, url: dog_intake_form_url(@dog), class: 'mb-3') do |form| %>
+  <% if @response && @response.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <strong><%= pluralize(@response.errors.count, "error") %> prohibited this response from being saved:</strong>
+      <ul>
+        <% @response.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.fields_for :intake_details do |details_form| %>
+    <%= render details_form.object, form: details_form %>
+  <% end %>
+
+  <%= form.submit 'Update details', class: 'btn btn-primary d-print-none'%>
+<% end %>

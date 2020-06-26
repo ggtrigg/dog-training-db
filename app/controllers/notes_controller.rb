@@ -11,8 +11,16 @@ class NotesController < ApplicationController
       client = parent.client
     end
       
-    @note = parent.notes.create(note_params)
-    redirect_to client_path(client)
+    respond_to do |format|
+      if @note = parent.notes.create(note_params)
+        format.html { redirect_to parent, notice: 'Note was successfully created.' }
+        format.js
+        format.json { render json: @note, status: :created, location: @note }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @note.errors, status: :unprocessable_entity }
+      end
+    end
   end
   
   def destroy
