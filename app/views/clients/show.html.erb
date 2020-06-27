@@ -4,10 +4,23 @@
       <p>
         <span class="h3"><%= @client.firstname %> <strong><%= @client.surname %></strong></span>
       </p>
+    </div>
+    <div class="col-auto text-info">
       <p>
-        <span class="border p-2 text-info"><%= client_details(@client) %></span>
+        <%= inline_address(@client.address) %>
       </p>
     </div>
+    <div class="col mx-auto text-info text-center">
+      <p>
+        <%= @client.phonenum_format %>
+      </p>
+    </div>
+    <div class="col text-info text-right">
+      <p>
+        <%= mail_to(@client.email_address, nil, class: 'text-reset') %>
+      </p>
+    </div>
+    <div class="w-100"></div>
     <div class="col">
       <div class="list-group list-group-horizontal" role="tablist">
         <a class="list-group-item list-group-item-action active" data-toggle="list" href="#dogs" role="tab">

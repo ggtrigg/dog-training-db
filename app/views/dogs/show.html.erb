@@ -1,18 +1,30 @@
+<% has_tt = @dog.services_a.find_index('trust_technique') %>
 <div class="col-sm-9">
   <h2><%= @dog.name %> <small class="text-muted">(<%= link_to @dog.client.fullname, @dog.client, class: 'text-reset' %>)</small></h2>
-  <p><%= @dog.describe %></p>
+  <p>
+    <%= @dog.describe %><br>
+    <% @dog.services_a.each do |service| %>
+      <span class="badge badge-secondary"><%= service.to_s.humanize %></span>
+    <% end %>
+    <%= link_to 'Edit', edit_dog_path(@dog), class: 'btn btn-primary btn-sm float-right' %>
+  </p>
+
   <div class="list-group list-group-horizontal" role="tablist">
-    <a class="list-group-item list-group-item-action active" data-toggle="list" href="#intake" role="tab">Intake Form</a>
-    <a class="list-group-item list-group-item-action" data-toggle="list" href="#notes" role="tab">
+    <% if has_tt %>
+      <a class="list-group-item list-group-item-action active" data-toggle="list" href="#intake" role="tab">Intake Form</a>
+    <% end %>
+    <a class="list-group-item list-group-item-action<%= ' active' unless has_tt %>" data-toggle="list" href="#notes" role="tab">
       Notes <span class="badge badge-secondary" id="note-count"><%= @dog.notes.count %></span></a>
     <a class="list-group-item list-group-item-action" data-toggle="list" href="#documents" role="tab">
       Documents <span class="badge badge-secondary" id="docs-count"><%= @dog.documents.count %></span></a>
   </div>
   <div class="tab-content p-2 border">
-    <div class="tab-pane active" id="intake", role="tabpanel">
-      <%= render 'intake_form/form' %>
-    </div>
-    <div class="tab-pane" id="notes", role="tabpanel">
+    <% if has_tt %>
+      <div class="tab-pane active" id="intake", role="tabpanel">
+        <%= render 'intake_form/form' %>
+      </div>
+    <% end %>
+    <div class="tab-pane<%= ' active' unless has_tt %>" id="notes", role="tabpanel">
       <%= render 'notes/notes' %>
     </div>
     <div class="tab-pane" id="documents", role="tabpanel">

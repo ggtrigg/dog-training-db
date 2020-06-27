@@ -12,7 +12,13 @@ class Dog < ApplicationRecord
   validates :breed, presence: true
 
   accepts_nested_attributes_for :intake_form
-  
+
+  SERVICES = [:daycare, :doggy_holiday, :trust_technique]
+
+  def services_a
+    read_attribute(:services) ? JSON.parse(read_attribute(:services)).filter(&:present?) : []
+  end
+
   def describe(do_html = false)
     notstr = 'not '
     if do_html

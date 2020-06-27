@@ -1,8 +1,15 @@
 <div class="card bg-light mb-3">
   <div class="card-body">
     <h5 class="card-title"><%= link_to dog.name, dog_path(dog) %></h5>
-    <p  class="card-text">
+    <div  class="card-text">
+      
       <%= dog.describe %>
-    </p>
+    
+      <div>
+        <% dog.services_a.each do |service| %>
+          <span class="badge badge-secondary"><%= service.to_s.humanize %></span>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

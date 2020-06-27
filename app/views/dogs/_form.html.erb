@@ -1,3 +1,7 @@
-<%= form_with(model: @dog.blank? ? [@client, @client.dogs.build ] : @dog, local: false) do |form| %>
+<% do_submit ||= nil %>
+<%= form_with(model: @dog.blank? ? [@client, @client.dogs.build ] : @dog, local: do_submit.present?) do |form| %>
   <%= render 'dogs/fields', f: form %>
+  <% if do_submit.present? %>
+    <%= form.submit 'Update', class: 'btn btn-primary mt-2' %>
+  <% end %>
 <% end %>

@@ -9,13 +9,13 @@
   </div>
 </div>
 <div class="form-row">
-  <div class="input-group mb-3 col-sm-3">
+  <div class="input-group col-sm-3">
     <div class="input-group-prepend">
       <span class="input-group-text" id="basic-addon1">Age</span>
     </div>
     <%= f.number_field :age, class: 'form-control', step: 0.1, 'aria-label': "Age", 'aria-describedby': "basic-addon1" %>
   </div>
-  <div class="input-group mb-3 col-sm-4">
+  <div class="input-group col-sm-4">
     <div class="input-group-prepend">
       <span class="input-group-text" id="basic-addon2">Sex</span>
     </div>
@@ -24,9 +24,19 @@
   <div class="form-group col-auto">
     <div class="custom-control custom-checkbox">
       <%# f.hidden_field :desexed, value: "0" %>
-      <%= f.check_box :desexed, include_hidden: false, id: 'desexed', checked: true, class: 'custom-control-input', id: 'is-desexed' %>
+      <%= f.check_box :desexed, include_hidden: false, id: 'desexed', checked: true, class: 'custom-control-input' %>
       <%= f.label :desexed, class: 'custom-control-label', for: 'is-desexed' %>
     </div>
   </div>
+</div>
+<h5 class="mt-2">Services</h5>
+<div class="form-row">
+  <%# f.collection_check_boxes :services, Dog::SERVICES, :last, :first do |b| %>
+  <%= f.collection_check_boxes :services, Dog::SERVICES, :itself, :itself do |b| %>
+    <div class="custom-control custom-checkbox custom-control-inline">
+    <%= b.check_box(class: 'custom-control-input') %>
+    <%= b.label(class: 'custom-control-label') { b.text.to_s.humanize } %>
+    </div>
+  <% end %>
 </div>
 
