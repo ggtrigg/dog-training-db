@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
   
+  before_action :set_client, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   
   def index
@@ -7,7 +8,6 @@ class ClientsController < ApplicationController
   end
   
   def show
-    @client = Client.find(params[:id])
   end
   
   def new
@@ -16,7 +16,6 @@ class ClientsController < ApplicationController
   end
   
   def edit
-    @client = Client.find(params[:id])
     @client.build_address unless @client.address
   end
   
@@ -31,16 +30,19 @@ class ClientsController < ApplicationController
   end
   
   def update
-    @client = Client.find(params[:id])
-    if @client.update(client_params)
-      redirect_to @client
-    else
-      render 'edit'
+    respond_to do |format|
+      if @client.update(client_params)
+        format.html { redirect_to @client, notice: 'Client was successfully updated.' }
+        format.js
+        format.json { render json: @client, status: :created, location: @client }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @client.errors, status: :unprocessable_entity }
+      end
     end
   end
   
   def destroy
-    @client = Client.find(params[:id])
     @client.destroy
    
     redirect_to clients_path
@@ -48,11 +50,15 @@ class ClientsController < ApplicationController
   
   private
   def client_params
-    params.require(:client).permit(:firstname, :surname, :phone_number, :email_address,
+    params.require(:client).permit(:firstname, :surname, :phone_number, :email_address, :documents,
       address_attributes: [:id, :street1, :street2, :suburb, :postcode, :state, :country],
       dogs_attributes: [:id, :name, :breed, :age, :sex, :desexed],
       notes_attributes: [:id, :annotation],
       attendees_attributes: [:price, :status],
       events_attributes: [:id, :event_type, :location, :price, :date, :duration])
+  end
+
+  def set_client
+    @client = Client.find(params[:id])
   end
 end

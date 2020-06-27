@@ -1,1 +1,2 @@
 $("<%= escape_javascript(render @dog) %>").appendTo("#dogs-container");
+$("#dogs-count").text("<%= @dog.client.dogs.count %>");

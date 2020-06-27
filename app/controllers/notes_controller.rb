@@ -5,10 +5,8 @@ class NotesController < ApplicationController
   def create
     if params[:client_id]
       parent = Client.find(params[:client_id])
-      client = parent
     elsif params[:dog_id]
       parent = Dog.find(params[:dog_id])
-      client = parent.client
     end
       
     respond_to do |format|

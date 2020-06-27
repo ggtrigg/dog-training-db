@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # resources :events do
   #   resources :attendees, shallow: true
   # end
-	resources :clients do
+  resources :clients do
     resources :addresses
     resources :attendees, shallow: true
     resources :notes, shallow: true

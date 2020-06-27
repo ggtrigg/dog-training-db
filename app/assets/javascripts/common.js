@@ -1,5 +1,5 @@
 $(function(){
   $(".modal-submit").click(function(){
-    $(this).closest(".modal-footer").prev(".modal-body").children("form").submit();
+    Rails.fire($(this).closest(".modal-footer").prev(".modal-body").children("form")[0], 'submit');
   })
 });

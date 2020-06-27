@@ -1,6 +1,7 @@
 class Dog < ApplicationRecord
   has_many :notes, as: :annotatable, dependent: :destroy
   has_one :intake_form, dependent: :destroy
+  has_many_attached :documents
   belongs_to :client
 
   after_create :add_intake_form

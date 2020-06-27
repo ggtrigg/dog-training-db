@@ -4,6 +4,7 @@ class Client < ApplicationRecord
   has_many :notes, as: :annotatable, dependent: :destroy
   has_many :attendees, dependent: :destroy
   has_many :events, through: :attendees, dependent: :destroy
+  has_many_attached :documents
   
   validates :firstname, presence: true
   validates :email_address, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}, allow_blank: true

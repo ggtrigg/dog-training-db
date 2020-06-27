@@ -1,0 +1,2 @@
+$("#docs-container").html("<%= escape_javascript(render @dog.documents) %>");
+$("#docs-count").text("<%= @dog.documents.count %>");

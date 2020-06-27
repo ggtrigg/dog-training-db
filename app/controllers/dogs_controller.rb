@@ -1,13 +1,12 @@
 class DogsController < ApplicationController
   
+  before_action :set_dog, only: [:show, :edit, :update]
   before_action :authenticate_user!
 
   def show
-    @dog = Dog.find(params[:id])
   end
   
   def edit
-    @dog = Dog.find(params[:id])
   end
   
   def create
@@ -26,12 +25,15 @@ class DogsController < ApplicationController
   end
   
   def update
-    @dog = Dog.find(params[:id])
-    
-    if @dog.update(dog_params)
-      redirect_to @dog.client
-    else
-      render 'edit'
+    respond_to do |format|
+      if @dog.update(dog_params)
+        format.html { redirect_to @dog, notice: 'Dog was successfully updated.' }
+        format.js
+        format.json { render json: @dog, status: :created, location: @dog }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @dog.errors, status: :unprocessable_entity }
+      end
     end
   end
   
@@ -44,6 +46,10 @@ class DogsController < ApplicationController
  
   private
     def dog_params
-      params.require(:dog).permit(:name, :breed, :age, :sex, :desexed)
+      params.require(:dog).permit(:name, :breed, :age, :sex, :desexed, :documents)
     end
-end
+
+    def set_dog
+      @dog = Dog.find(params[:id])
+    end
+  end

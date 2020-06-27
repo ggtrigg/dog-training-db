@@ -1,0 +1,5 @@
+<%= form_with model: model, local: false, format: :js, class: 'form-inline' do |form| %>
+  <div class="form-group">
+    <%= form.file_field :documents, class: 'form-control' %>
+  </div>
+<% end %>

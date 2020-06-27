@@ -11,14 +11,14 @@
     <div class="col">
       <div class="list-group list-group-horizontal" role="tablist">
         <a class="list-group-item list-group-item-action active" data-toggle="list" href="#dogs" role="tab">
-          Dogs <span class="badge badge-secondary"><%= @client.dogs.count %></span></a>
+          Dogs <span class="badge badge-secondary" id="dogs-count"><%= @client.dogs.count %></span></a>
         <a class="list-group-item list-group-item-action" data-toggle="list" href="#notes" role="tab">
           Notes <span class="badge badge-secondary" id="note-count"><%= @client.notes.count %></span></a>
         <a class="list-group-item list-group-item-action" data-toggle="list" href="#documents" role="tab">
-          Documents <span class="badge badge-secondary">0</span></a>
+          Documents <span class="badge badge-secondary" id="docs-count"><%= @client.documents.count %></span></a>
       </div>
       <div class="tab-content p-2 border">
-        <div class="tab-pane active" id="dogs", role="tabpanel">
+        <div class="tab-pane active" id="dogs" role="tabpanel">
           <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#dogModal">
             Add dog
           </button>
@@ -26,11 +26,14 @@
             <%= render @client.dogs %>
           </div>
         </div>
-        <div class="tab-pane" id="notes", role="tabpanel">
+        <div class="tab-pane" id="notes" role="tabpanel">
           <%= render 'notes/notes' %>
         </div>
-        <div class="tab-pane" id="documents", role="tabpanel">
-          <p>Documents are listed here</p>
+        <div class="tab-pane" id="documents" role="tabpanel">
+          <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#uploadModal">
+            Upload file
+          </button>
+          <%= render 'documents', model: @client %>
         </div>
       </div>
     </div>
@@ -41,12 +44,12 @@
   <%= link_to 'Home', root_path, class: 'btn btn-secondary' %>
 </div>
 
-<!-- Modal -->
+<!-- New Dog Modal -->
 <div class="modal fade" id="dogModal" tabindex="-1" role="dialog" aria-labelledby="dogModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="noteModalCenterTitle">New dog</h5>
+        <h5 class="modal-title" id="dogModalCenterTitle">New dog</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -57,6 +60,27 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary modal-submit" data-dismiss="modal">Add dog</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Document Upload Modal -->
+<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="uploadModalCenterTitle">Upload file</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'upload_form', model: @client %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary modal-submit" data-dismiss="modal">Upload file</button>
       </div>
     </div>
   </div>

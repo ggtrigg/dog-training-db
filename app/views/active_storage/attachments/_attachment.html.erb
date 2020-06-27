@@ -1,0 +1,6 @@
+<tr>
+  <td><%= link_to attachment.filename.to_s, rails_blob_path(attachment, disposition: attachment), target: "_blank" %></td>
+  <td><%= number_to_human_size(attachment.byte_size.to_i) %></td>
+  <td><%= Mime::Type.lookup(attachment.content_type).to_sym %></td>
+  <td><%= attachment.created_at.localtime.to_s :long %></td>
+</tr>
