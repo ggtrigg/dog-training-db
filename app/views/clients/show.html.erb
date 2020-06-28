@@ -35,8 +35,10 @@
           <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#dogModal">
             Add dog
           </button>
-          <div id="dogs-container">
-            <%= render @client.dogs %>
+          <div>
+            <div class="row" id="dogs-container">
+              <%= render @client.dogs %>
+            </div>
           </div>
         </div>
         <div class="tab-pane" id="notes" role="tabpanel">

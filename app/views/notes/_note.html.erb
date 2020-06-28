@@ -1,8 +1,10 @@
-<div class="card bg-light mb-3">
-  <div class="card-body">
-    <h5 class="card-title"><%= note.updated_at.getlocal.to_formatted_s :long %></h5>
-    <p  class="card-text">
-      <%= note.annotation %>
-    </p>
+<div class="col">
+  <div class="card bg-light mb-3">
+    <div class="card-body">
+      <h5 class="card-title"><%= note.updated_at.getlocal.to_formatted_s :long %></h5>
+      <p  class="card-text">
+        <%= note.annotation %>
+      </p>
+    </div>
   </div>
 </div>
