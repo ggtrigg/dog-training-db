@@ -17,7 +17,8 @@ class Dog < ApplicationRecord
   SERVICES = [:daycare, :doggy_holiday, :trust_technique]
 
   def services_a
-    read_attribute(:services) ? JSON.parse(read_attribute(:services)).filter(&:present?) : []
+    # read_attribute(:services) ? JSON.parse(read_attribute(:services)).filter(&:present?) : []
+    read_attribute(:services) ? JSON.parse(read_attribute(:services)) : []
   end
 
   def describe(do_html = false)
@@ -35,7 +36,7 @@ class Dog < ApplicationRecord
     if do_html
       notstr = '<span class="text-danger">' + notstr.strip + '</span> '
     end
-    sprintf("a %s old %s %sdesexed %s", age_str, self.sex, self.desexed ? '' : notstr, self.breed)
+    sprintf("a %s %s %sdesexed %s", age_str, self.sex, self.desexed ? '' : notstr, self.breed)
   end
 
   def calculate_dob
