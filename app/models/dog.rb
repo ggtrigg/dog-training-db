@@ -17,8 +17,7 @@ class Dog < ApplicationRecord
   SERVICES = [:daycare, :doggy_holiday, :trust_technique]
 
   def services_a
-    # read_attribute(:services) ? JSON.parse(read_attribute(:services)).filter(&:present?) : []
-    read_attribute(:services) ? JSON.parse(read_attribute(:services)) : []
+    read_attribute(:services) ? JSON.parse(read_attribute(:services)).delete_if(&:empty?) : []
   end
 
   def describe(do_html = false)

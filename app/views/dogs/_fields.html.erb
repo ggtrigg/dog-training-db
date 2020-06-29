@@ -20,7 +20,6 @@
   </div>
   <div class="form-group col-auto">
     <div class="custom-control custom-checkbox">
-      <%# f.hidden_field :desexed, value: "0" %>
       <%= f.check_box :desexed, include_hidden: false, id: 'desexed', checked: true, class: 'custom-control-input' %>
       <%= f.label :desexed, class: 'custom-control-label', for: 'is-desexed' %>
     </div>
@@ -28,10 +27,9 @@
 </div>
 <h5 class="mt-2">Services</h5>
 <div class="form-row">
-  <%# f.collection_check_boxes :services, Dog::SERVICES, :last, :first do |b| %>
   <%= f.collection_check_boxes :services, Dog::SERVICES, :itself, :itself do |b| %>
     <div class="custom-control custom-checkbox custom-control-inline">
-    <%= b.check_box(class: 'custom-control-input') %>
+    <%= b.check_box(class: 'custom-control-input', checked: ('checked' if (f.object && f.object.services_a.find_index(b.value.to_s).present?))) %>
     <%= b.label(class: 'custom-control-label') { b.text.to_s.humanize } %>
     </div>
   <% end %>
