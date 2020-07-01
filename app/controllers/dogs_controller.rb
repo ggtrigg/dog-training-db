@@ -46,7 +46,7 @@ class DogsController < ApplicationController
  
   private
     def dog_params
-      params['dog']['services'].delete_if &:empty?
+      params['dog']['services'].delete_if(&:empty?) if params['dog']['services'].present?
       params.require(:dog).permit(:name, :breed, :age, :sex, :desexed, :documents, services: [])
     end
 

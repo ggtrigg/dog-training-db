@@ -19,9 +19,9 @@
     <%= f.select :sex, options_for_select(Dog.sexes.map {|s| [s.first.titlecase, s.first]}), {}, {class: 'form-control', 'aria-label': "Sex", 'aria-describedby': "sexHelp"} %>
   </div>
   <div class="form-group col-auto">
-    <div class="custom-control custom-checkbox">
-      <%= f.check_box :desexed, include_hidden: false, id: 'desexed', checked: true, class: 'custom-control-input' %>
-      <%= f.label :desexed, class: 'custom-control-label', for: 'is-desexed' %>
+    <div class="custom-control custom-checkbox mt-4">
+      <%= f.check_box :desexed, class: 'custom-control-input' %>
+      <%= f.label :desexed, class: 'custom-control-label' %>
     </div>
   </div>
 </div>

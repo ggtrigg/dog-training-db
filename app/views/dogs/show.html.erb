@@ -10,7 +10,7 @@
   </div>
   <div class="row mb-2">
     <div class="col">
-    	<%= @dog.describe %><br>
+    	<%= @dog.describe(true).html_safe %><br>
     	<% @dog.services_a.each do |service| %>
     	  <span class="badge badge-secondary"><%= service.to_s.humanize %></span>
     	<% end %>
