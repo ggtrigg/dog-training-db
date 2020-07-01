@@ -16,7 +16,7 @@
   </div>
   <div class="form-group col">
     <%= f.label :sex %>
-    <%= f.select :sex, options_for_select(Dog.sexes.map {|s| [s.first.titlecase, s.first]}), {}, {class: 'form-control', 'aria-label': "Sex", 'aria-describedby': "sexHelp"} %>
+    <%= f.select :sex, options_for_select(Dog.sexes.map {|s| [s.first.titlecase, s.first]}, f.object.sex), {}, {class: 'form-control', 'aria-label': "Sex", 'aria-describedby': "sexHelp"} %>
   </div>
   <div class="form-group col-auto">
     <div class="custom-control custom-checkbox mt-4">

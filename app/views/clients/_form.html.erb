@@ -1,4 +1,3 @@
-<%# We're inside a col-sm-10 col-sm-offset-2 here. %>
 <%= form_with model: @client, local: true do |form| %>
  
   <% if @client.errors.any? %>
@@ -17,52 +16,47 @@
       </div>
     </div>
   <% end %>
+  
+  <div class="form-row">
+    <div class="form-group col">
+      <%= form.label :firstname %>
+      <%= form.text_field :firstname, class: 'form-control', id: 'firstname' %>
+    </div>
+   
+    <div class="form-group col">
+      <%= form.label :surname %>
+      <%= form.text_field :surname, class: 'form-control', id: 'surname' %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="field form-group col-sm-6">
+      <%= form.label :phone_number %>
+      <%= form.telephone_field :phone_number, class: 'form-control', id: 'phone_number' %>
+    </div>
+   
+    <div class="field form-group col-sm-6">
+      <%= form.label :email_address %>
+      <%= form.email_field :email_address, class: 'form-control', id: 'email_address' %>
+    </div>
+  </div>
 
-  <div class="row">
-    <div class="col-sm-8">
-      <div class="form-row">
-        <div class="form-group col">
-          <%= form.label :firstname %>
-          <%= form.text_field :firstname, class: 'form-control', id: 'firstname' %>
-        </div>
-       
-        <div class="form-group col">
-          <%= form.label :surname %>
-          <%= form.text_field :surname, class: 'form-control', id: 'surname' %>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="field form-group col-sm-6">
-          <%= form.label :phone_number %>
-          <%= form.telephone_field :phone_number, class: 'form-control', id: 'phone_number' %>
-        </div>
-       
-        <div class="field form-group col-sm-6">
-          <%= form.label :email_address %>
-          <%= form.email_field :email_address, class: 'form-control', id: 'email_address' %>
-        </div>
-      </div>
-    
-      <h4>Address</h4>
-    
-      <%= form.fields_for :address, @client.address do |addr| %>
-        <%= render 'addresses/fields', f: addr %>
-      <% end %>
-      
-    
-      <% if @client.new_record? %>
-        <h4><%= 'Dog'.pluralize((@client.dogs.count <= 1) ? 1 : 2) %></h4>
-        <%= form.fields_for :dogs, @client.dogs.build do |dog| %>
-          <%= render 'dogs/fields', f: dog %>
-        <% end %>
-      <% end %>
+  <h4>Address</h4>
+
+  <%= form.fields_for :address, @client.address do |addr| %>
+    <%= render 'addresses/fields', f: addr %>
+  <% end %>
+
+  <% if @client.new_record? %>
+    <h4><%= 'Dog'.pluralize((@client.dogs.count <= 1) ? 1 : 2) %></h4>
+    <%= form.fields_for :dogs, @client.dogs.build(desexed: true) do |dog| %>
+      <%= render 'dogs/fields', f: dog %>
+    <% end %>
+  <% end %>
+  
+  <div class="form-row">
+    <div class="actions form-group mt-3">
+      <%= form.submit class: 'btn btn-primary' %>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="actions form-group">
-        <%= form.submit class: 'btn btn-primary' %>
-      </div>
-    </div>
-  </div>
+
 <% end %>
