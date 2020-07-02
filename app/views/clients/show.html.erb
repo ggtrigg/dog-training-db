@@ -5,23 +5,23 @@
         <span class="h3"><%= @client.firstname %> <strong><%= @client.surname %></strong></span>
       </p>
     </div>
-    <div class="col ml-auto text-right">
+    <div class="col ml-auto text-sm-right">
       <%= link_to 'Edit', edit_client_path(@client), class: 'btn btn-info btn-sm' %>
     </div>
     <div class="w-100"></div>
-    <div class="col-auto text-info">
+    <div class="col-sm-auto text-info">
       <p>
         <%= fa_icon 'address-card' %>
         <%= inline_address(@client.address) %>
       </p>
     </div>
-    <div class="col mx-auto text-info text-center">
+    <div class="col-sm mx-auto text-info text-sm-center">
       <p>
         <%= fa_icon 'phone' %>
         <%= @client.phonenum_format %>
       </p>
     </div>
-    <div class="col text-info text-right">
+    <div class="col-sm text-info text-sm-right">
       <p>
         <%= fa_icon 'envelope' %>
         <%= mail_to(@client.email_address, nil, class: 'text-reset') %>
@@ -31,11 +31,11 @@
     <div class="col">
       <div class="list-group list-group-horizontal" role="tablist">
         <a class="list-group-item list-group-item-action active" data-toggle="list" href="#dogs" role="tab">
-          Dogs <span class="badge badge-secondary" id="dogs-count"><%= @client.dogs.count %></span></a>
+          <%= fa_icon 'dog' %> <span class="d-none d-sm-inline">Dogs </span><span class="badge badge-secondary" id="dogs-count"><%= @client.dogs.count %></span></a>
         <a class="list-group-item list-group-item-action" data-toggle="list" href="#notes" role="tab">
-          Notes <span class="badge badge-secondary" id="note-count"><%= @client.notes.count %></span></a>
+          <%= fa_icon 'comment-alt' %> <span class="d-none d-sm-inline">Notes </span><span class="badge badge-secondary" id="note-count"><%= @client.notes.count %></span></a>
         <a class="list-group-item list-group-item-action" data-toggle="list" href="#documents" role="tab">
-          Documents <span class="badge badge-secondary" id="docs-count"><%= @client.documents.count %></span></a>
+          <%= fa_icon 'file-alt' %> <span class="d-none d-sm-inline">Documents </span><span class="badge badge-secondary" id="docs-count"><%= @client.documents.count %></span></a>
       </div>
       <div class="tab-content p-2 border">
         <div class="tab-pane active" id="dogs" role="tabpanel">
