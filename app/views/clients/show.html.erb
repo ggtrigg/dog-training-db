@@ -11,16 +11,19 @@
     <div class="w-100"></div>
     <div class="col-auto text-info">
       <p>
+        <%= fa_icon 'address-card' %>
         <%= inline_address(@client.address) %>
       </p>
     </div>
     <div class="col mx-auto text-info text-center">
       <p>
+        <%= fa_icon 'phone' %>
         <%= @client.phonenum_format %>
       </p>
     </div>
     <div class="col text-info text-right">
       <p>
+        <%= fa_icon 'envelope' %>
         <%= mail_to(@client.email_address, nil, class: 'text-reset') %>
       </p>
     </div>
@@ -37,7 +40,7 @@
       <div class="tab-content p-2 border">
         <div class="tab-pane active" id="dogs" role="tabpanel">
           <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#dogModal">
-            Add dog
+            Add dog <%= fa_icon 'plus' %>
           </button>
           <div>
             <div class="row" id="dogs-container">
@@ -50,7 +53,7 @@
         </div>
         <div class="tab-pane" id="documents" role="tabpanel">
           <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#uploadModal">
-            Upload file
+            Upload file <%= fa_icon 'plus' %>
           </button>
           <%= render 'documents', model: @client %>
         </div>
