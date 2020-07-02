@@ -16,6 +16,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+rsync_exclude.txt
 
 # Ignore local storage
 /storage/*

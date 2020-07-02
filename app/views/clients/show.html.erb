@@ -1,10 +1,14 @@
 <div class="col-sm-10">
   <div class="row">
-    <div class="col-sm-12" id="client-name">
+    <div class="col-sm-auto" id="client-name">
       <p>
         <span class="h3"><%= @client.firstname %> <strong><%= @client.surname %></strong></span>
       </p>
     </div>
+    <div class="col ml-auto text-right">
+      <%= link_to 'Edit', edit_client_path(@client), class: 'btn btn-info btn-sm' %>
+    </div>
+    <div class="w-100"></div>
     <div class="col-auto text-info">
       <p>
         <%= inline_address(@client.address) %>

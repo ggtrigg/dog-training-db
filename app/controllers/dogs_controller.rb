@@ -14,11 +14,13 @@ class DogsController < ApplicationController
     
     respond_to do |format|
       if @dog = @client.dogs.create(dog_params)
+        
         format.html { redirect_to parent, notice: 'Dog successfully created.' }
-        format.js
+        format.js { flash.now[:notice] = 'Dog successfully created.' }
         format.json { render json: @dog, status: :created, location: @dog }
       else
-        format.html { render action: "new" }
+        format.html { render action: "new", alert: 'Unable to create dog, please try again.' }
+        format.js { flash.now[:alert] = 'Unable to create dog, please try again.' }
         format.json { render json: @dog.errors, status: :unprocessable_entity }
       end
     end
@@ -28,10 +30,11 @@ class DogsController < ApplicationController
     respond_to do |format|
       if @dog.update(dog_params)
         format.html { redirect_to @dog, notice: 'Dog was successfully updated.' }
-        format.js
+        format.js { flash.now[:notice] = 'Dog successfully updated.' }
         format.json { render json: @dog, status: :created, location: @dog }
       else
-        format.html { render action: "edit" }
+        format.html { render action: "edit", alert: 'Unable to update dog, please try again.' }
+        format.js { flash.now[:alert] = 'Unable to update dog, please try again.' }
         format.json { render json: @dog.errors, status: :unprocessable_entity }
       end
     end

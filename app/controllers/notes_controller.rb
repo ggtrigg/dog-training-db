@@ -12,10 +12,11 @@ class NotesController < ApplicationController
     respond_to do |format|
       if @note = parent.notes.create(note_params)
         format.html { redirect_to parent, notice: 'Note was successfully created.' }
-        format.js
+        format.js { flash.now[:notice] = 'Note was successfully created.' }
         format.json { render json: @note, status: :created, location: @note }
       else
-        format.html { render action: "new" }
+        format.html { render action: "new", alert: 'Unable to create note, please try again.' }
+        format.js { flash.now[:alert] = 'Unable to create note, please try again.' }
         format.json { render json: @note.errors, status: :unprocessable_entity }
       end
     end

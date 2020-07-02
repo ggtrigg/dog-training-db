@@ -33,11 +33,12 @@ class ClientsController < ApplicationController
   def update
     respond_to do |format|
       if @client.update(client_params)
-        format.html { redirect_to @client, notice: 'Client successfully updated' }
-        format.js
+        format.html { redirect_to @client, notice: 'Client successfully updated.' }
+        format.js { flash.now[:notice] = 'Client successfully updated.' }
         format.json { render json: @client, status: :created, location: @client }
       else
-        format.html { render action: "edit", alert: 'Error updating client' }
+        format.html { render action: "edit", alert: 'Unable to update client, please try again.' }
+        format.js { flash[:alert] = 'Unable to update client, please try again.' }
         format.json { render json: @client.errors, status: :unprocessable_entity }
       end
     end
@@ -51,7 +52,7 @@ class ClientsController < ApplicationController
   
   private
   def client_params
-    params['client']['dogs_attributes']['services'].delete_if(&:empty?) if params['client']['dogs_attributes']['services'].present?
+    params['client']['dogs_attributes']['services'].delete_if(&:empty?) if params['client']['dogs_attributes'].present? && params['client']['dogs_attributes']['services'].present?
     params.require(:client).permit(:firstname, :surname, :phone_number, :email_address, :documents,
       address_attributes: [:id, :street1, :street2, :suburb, :postcode, :state, :country],
       dogs_attributes: [:id, :name, :breed, :age, :sex, :desexed, services: []],

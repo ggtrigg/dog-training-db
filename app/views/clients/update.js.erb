@@ -1,2 +1,3 @@
 $("#docs-container").html("<%= escape_javascript(render @client.documents) %>");
 $("#docs-count").text("<%= @client.documents.count %>");
+$('.flash-wrapper').html("<%= escape_javascript(render 'layouts/messages') %>");

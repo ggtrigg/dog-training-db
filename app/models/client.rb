@@ -15,8 +15,8 @@ class Client < ApplicationRecord
   accepts_nested_attributes_for :address, allow_destroy: true, reject_if: :all_blank, update_only: true
   accepts_nested_attributes_for :dogs, reject_if: proc { |attributes| attributes['name'].blank? && attributes['breed'].blank? }
   accepts_nested_attributes_for :notes, allow_destroy: true, reject_if: :all_blank
-  accepts_nested_attributes_for :attendees, allow_destroy: true
-  accepts_nested_attributes_for :events, allow_destroy: true, reject_if: :all_blank
+  # accepts_nested_attributes_for :attendees, allow_destroy: true
+  # accepts_nested_attributes_for :events, allow_destroy: true, reject_if: :all_blank
   
   scope :name_has, -> (name) { where("(firstname like ?) or (surname like ?)", "%#{name}%", "%#{name}%")}
   

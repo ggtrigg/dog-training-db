@@ -1,0 +1,8 @@
+<div class="col-sm-10 offset-sm-1 alert alert-info alert-dismissible<%= ' d-none' unless notice.present? %>" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <%= notice %>
+</div>
+<div class="col-sm-10 offset-sm-1 alert alert-danger alert-dismissible<%= ' d-none' unless alert.present? %>" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <%= alert %>
+</div>
