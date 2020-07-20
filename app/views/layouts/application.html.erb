@@ -15,7 +15,7 @@
     <div class="container">
       <div class="row">
         <%= render "header" %>
-        <div class="pull-right">
+        <div class="pull-right d-print-none">
           <% if user_signed_in? then %>
             <%=
               link_to('Log out'.html_safe, destroy_user_session_path, method: 'delete')

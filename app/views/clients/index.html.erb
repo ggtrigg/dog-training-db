@@ -1,5 +1,5 @@
 <div class="col-sm-2">
-  <%= link_to 'New Client', new_client_path, class: 'btn btn-primary' %>
+  <%= link_to 'New Client', new_client_path, class: 'btn btn-primary d-print-none' %>
 </div>
 <div class="col-sm-8 mt-2">
   <h1>Client list</h1>
@@ -17,7 +17,7 @@
         <td><%= link_to client.fullname, client_path(client), class: 'text-reset' %></td>
         <td><%= client.phonenum_format %></td>
         <td><%= client.dogs.map {|d| link_to d.name, dog_path(d) }.join(' &bull; ').html_safe %></td>
-        <td><%= link_to 'Edit', edit_client_path(client), class: 'btn btn-warning btn-sm' %></td>
+        <td><%= link_to 'Edit', edit_client_path(client), class: 'btn btn-warning btn-sm d-print-none' %></td>
       </tr>
     <% end %>
   </table>

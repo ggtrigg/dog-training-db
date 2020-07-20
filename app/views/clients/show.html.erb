@@ -6,7 +6,7 @@
       </p>
     </div>
     <div class="col ml-auto text-sm-right">
-      <%= link_to 'Edit', edit_client_path(@client), class: 'btn btn-info btn-sm' %>
+      <%= link_to 'Edit', edit_client_path(@client), class: 'btn btn-info btn-sm d-print-none' %>
     </div>
     <div class="w-100"></div>
     <div class="col-sm-auto text-info">
@@ -39,7 +39,7 @@
       </div>
       <div class="tab-content p-2 border">
         <div class="tab-pane active" id="dogs" role="tabpanel">
-          <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#dogModal">
+          <button type="button" class="btn btn-primary mb-2 d-print-none" data-toggle="modal" data-target="#dogModal">
             Add dog <%= fa_icon 'plus' %>
           </button>
           <div>
@@ -52,7 +52,7 @@
           <%= render 'notes/notes' %>
         </div>
         <div class="tab-pane" id="documents" role="tabpanel">
-          <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#uploadModal">
+          <button type="button" class="btn btn-primary mb-2 d-print-none" data-toggle="modal" data-target="#uploadModal">
             Upload file <%= fa_icon 'plus' %>
           </button>
           <%= render 'documents', model: @client %>
@@ -62,7 +62,7 @@
   </div>
 </div>
 <div class="col-sm-2 order-first">
-  <%= link_to 'Home', root_path, class: 'btn btn-secondary btn-sm' %>
+  <%= link_to 'Home', root_path, class: 'btn btn-secondary btn-sm d-print-none' %>
 </div>
 
 <!-- New Dog Modal -->

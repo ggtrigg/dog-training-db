@@ -16,7 +16,7 @@
     	<% end %>
     </div>
     <div class="col-auto ml-auto">
-      <%= link_to 'Edit', edit_dog_path(@dog), class: 'btn btn-primary btn-sm' %>
+      <%= link_to 'Edit', edit_dog_path(@dog), class: 'btn btn-primary btn-sm d-print-none' %>
     </div>
   </div>
 
@@ -40,7 +40,7 @@
       <%= render 'notes/notes' %>
     </div>
     <div class="tab-pane" id="documents", role="tabpanel">
-          <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#uploadModal">
+          <button type="button" class="btn btn-primary mb-2 d-print-none" data-toggle="modal" data-target="#uploadModal">
             Upload file <%= fa_icon 'plus' %>
           </button>
           <%= render 'documents', model: @dog %>
@@ -48,8 +48,8 @@
   </div>
 </div>
 <div class="col-sm-2 order-first">
-  <%= link_to 'Client', client_path(@dog.client), class: 'btn btn-primary btn-sm' %>
-  <%= link_to 'Home', root_path, class: 'btn btn-secondary btn-sm' %>
+  <%= link_to 'Client', client_path(@dog.client), class: 'btn btn-primary btn-sm d-print-none' %>
+  <%= link_to 'Home', root_path, class: 'btn btn-secondary btn-sm d-print-none' %>
 </div>
 
 
