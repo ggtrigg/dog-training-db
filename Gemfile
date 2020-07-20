@@ -34,6 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'trusona', '~> 2.5', '>= 2.5.1'
 
 # Use Passenger
 # gem "passenger", ">= 5.3.2", require: "phusion_passenger/rack_handler"
