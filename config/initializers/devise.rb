@@ -255,48 +255,11 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  # config.omniauth :open_id,
-  #   name: :trusona,
-  #   identifier: 'https://gateway.trusona.net',
-  #   scope: %w(openid email profile offline_access),
-  #   client_id: "11ed91b3-9c05-4f5e-92e1-a7425bd8788a",
-  #   identifier: "11ed91b3-9c05-4f5e-92e1-a7425bd8788a",
-  #   response_type: :id_token,
-  #   response_mode: :form_post,
-  #   redirect_uri: "http://localhost:3000"
-
-  config.omniauth :oidc,
-    name: :trusona,
-    # scope: [:openid, :email, :profile],
-    scope: 'openid profile email offline_access',
-    discovery: true,
-    issuer: 'https://gateway.trusona.net/oidc',
-    response_type: :id_token,
-    response_mode: :form_post,
-    client_options: {
-      # port: 443,
-      # scheme: "https",
-      # host: "gateway.trusona.net",
-      site: 'https://gateway.trusona.net/',
-      identifier: "11ed91b3-9c05-4f5e-92e1-a7425bd8788a",
-      redirect_uri: "http://localhost:3000",
-      authorization_endpoint: 'connect/authorize',
-      token_endpoint: 'connect/token',
-      userinfo_endpoint: 'connect/userinfo'
-    }
-
-  # Rails.application.config.middleware.use OmniAuth::Builder do
-  #   provider :oidc, Settings.openid_connect.client_id, Settings.openid_connect.client_secret, {
-  #     :name => :your_oidc_provider,
-  #     :scope => 'openid profile email offline_access',
-  #     :client_options => {
-  #       :site => 'https://yourOidcProvider.com/',
-  #       :authorize_url => 'connect/authorize',
-  #       :token_url => 'connect/token',
-  #       :userinfo_url => 'connect/userinfo'
-  #     }
-  #   }
-  # end
+  
+  config.omniauth :trusona,
+  {
+    client_id: Rails.application.credentials.trusona[:client_id]
+  }
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
