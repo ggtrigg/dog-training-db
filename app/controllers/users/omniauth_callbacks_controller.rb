@@ -1,20 +1,26 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def trusona
-    binding.pry
     # You need to implement the method below in your model (e.g. app/models/user.rb)
     @user = User.from_omniauth(request.env["omniauth.auth"])
+    
+    # If the user already exists, update the provider & uid from omniauth.
+    u = User.find_by_email @user.email
+    unless u.nil?
+      u.provider = @user.provider
+      u.uid = @user.uid
+      @user = u
+    end
 
     if @user.persisted?
       sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated
-      set_flash_message(:notice, :success, kind: "Trusona") if is_navigational_format?
+      set_flash_message!(:notice, :success, kind: "Trusona")
     else
       session["devise.trusona_data"] = request.env["omniauth.auth"].except(:extra) # Removing extra as it can overflow some session stores
-      redirect_to new_user_registration_url
+      redirect_to root_path
     end
   end
 
   def failure
-    # binding.pry
     redirect_to root_path
   end
 end
