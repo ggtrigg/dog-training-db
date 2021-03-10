@@ -21,3 +21,18 @@ div#application-header,
 div#application-footer {
   padding-top: 25px;
 }
+
+a.list-group-item[role=tab]:not(.active) {
+  background-color: lightsteelblue;
+}
+
+a.list-group-item[role=tab] {
+  border-top-left-radius: 15px !important;
+  border-top-right-radius: 15px !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+div.tab-content {
+  background-color: antiquewhite;
+}
