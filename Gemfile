@@ -16,7 +16,7 @@ gem 'mysql2'
 # Use Devise for user authentication
 gem 'devise'
 # Use Puma as the app server
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 4.3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 6.0'
 # Use Uglifier as compressor for JavaScript assets
