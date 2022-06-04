@@ -1,0 +1,15 @@
+current directory: /home/ggt/src/rails/dog-training-db/vendor/cache/ruby/3.0.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+/usr/bin/ruby3.0 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20220605-7997-oeyxsw.rb extconf.rb
+creating Makefile
+
+current directory: /home/ggt/src/rails/dog-training-db/vendor/cache/ruby/3.0.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make DESTDIR\= clean
+
+current directory: /home/ggt/src/rails/dog-training-db/vendor/cache/ruby/3.0.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make DESTDIR\=
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+
+current directory: /home/ggt/src/rails/dog-training-db/vendor/cache/ruby/3.0.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20220605-7997-s8e46

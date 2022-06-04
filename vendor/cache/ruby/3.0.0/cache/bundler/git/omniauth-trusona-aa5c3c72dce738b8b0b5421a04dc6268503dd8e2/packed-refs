@@ -1,0 +1,4 @@
+# pack-refs with: peeled fully-peeled sorted 
+8edbf2296ccfbb0651b9bc49514e002c40a967ea refs/heads/cookies_same_site_protection
+317499deda65c80c8f21d83db9d017b21f74878f refs/heads/master
+1496dcefbcbfd4aad15fe7a374a4049f519ad15e refs/heads/rails-upgrade
