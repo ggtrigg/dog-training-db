@@ -6,7 +6,7 @@
     "@rails/activestorage": "^7",
     "@rails/ujs": "^7",
     "@rails/webpacker": "5.2.1",
-    "bootstrap": "^4.5.2",
+    "bootstrap": "^5.0.0",
     "channels": "^0.0.4",
     "jquery": "^3.5.1",
     "jquery-ujs": "^1.2.2",
