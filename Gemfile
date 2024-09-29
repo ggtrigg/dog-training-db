@@ -68,6 +68,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Bootstrap integration
 gem 'jquery-rails'
-gem 'bootstrap', '~> 4.4'
+gem 'bootstrap', '~> 4.6'
 gem 'autoprefixer-rails'
 gem 'font_awesome5_rails'
